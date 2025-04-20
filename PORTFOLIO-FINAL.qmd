@@ -1,0 +1,870 @@
+---
+title: "PORTFOLIO"
+author: "Sandra Osei"
+date: "April 18, 2025"
+format: html
+editor: visual
+toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. Introduction
+
+This portfolio showcases my analytical journey through a statistical modeling course, where I explored predictive modeling techniques using three distinct datasets: the Diamonds dataset from the ggplot2 package, the 2019 Parent and Family Involvement (PFI) dataset, and the Auto dataset from the ISLR package. Authored by Sandra Osei, this work demonstrates my ability to apply a range of statistical methods—including multiple regression, multinomial logistic regression, linear discriminant analysis (LDA), polynomial regression, and ridge regression—to address real-world questions. Each analysis leverages the tidymodels framework in R for data preprocessing, model fitting, and performance evaluation, ensuring robust workflows with proper validation techniques like train-test splits and cross-validation. The Diamonds analysis predicts carat weights using physical and qualitative attributes, the PFI analysis examines factors influencing K-12 student grades, and the Auto analysis models car acceleration while addressing multicollinearity. Through these projects, I aim to highlight my proficiency in statistical modeling, data interpretation, and the application of insights to practical contexts, such as educational initiatives like GVSU’s K-12 Connect.
+
+# 2. Loading Libraries
+
+```{r setup2,message=FALSE,warning=FALSE}
+library(mosaic)
+library(dplyr)
+library(tidyverse)
+library(tidymodels)
+library(olsrr) 
+library(ggformula)
+library(GGally)
+library(ISLR)
+library(boot)
+library(leaps)
+library(ISLR2)
+library(boot)
+library(leaps)
+library(dials)
+library(parallel)
+library(tinytex)
+library(skimr)
+library(GGally)
+library(readxl)
+library(nnet)
+library(MASS)
+library(ggplot2)
+library(discrim)
+library(purrr)
+library(tibble)
+```
+
+```{r}
+set.seed(120)
+```
+
+\#
+
+# 3. Diamonds Data
+
+## 3.1 Introduction
+
+The Diamonds Project analyzes the diamonds dataset from the ggplot2 package to predict diamond carat weights using physical measurements and qualitative attributes. The goal is to build and compare simple and multiple regression models, leveraging packages like tidymodels, dplyr, and ggplot2. This project demonstrates data cleaning, exploratory data analysis (EDA), model fitting, and performance evaluation, providing insights into the factors influencing diamond carat weights.
+
+### 3.2 Data Cleaning and Preprocessing
+
+```{r}
+data(diamonds, package = "ggplot2") 
+diamonds_clean <- diamonds %>% 
+  filter(x > 0, y > 0, z > 0) %>%
+  mutate( cut = factor(cut, ordered = FALSE), color = factor(color, ordered = FALSE), clarity = factor(clarity, ordered = FALSE) )
+```
+
+### 3.3 Exploratory Data Analysis: ggpairs
+
+```{r}
+ggpairs_plot <- diamonds_clean %>% 
+  dplyr::select(carat, x,y,z,depth,table, cut, color, clarity) %>%
+  ggpairs(columns = 1:4, aes(color = cut)) + ggtitle("Pairwise Relationships in Diamonds Dataset") 
+ggpairs_plot
+```
+
+This ggplot shows strong positive correlations between carat and the dimensions (x, y, z) of diamonds in the dataset, indicating that larger diamonds generally have bigger measurements. The correlations are consistently high across all diamond cuts, with only slight variations. Density plots reveal that most diamonds are small in size, and scatterplots highlight a few outliers with unusual measurement
+
+### 3.4 Simple Linear Regression with x
+
+```{r, splitting data into training and testing}
+split <- initial_split(diamonds_clean, prop = 0.8) 
+train_data <- training(split) 
+test_data <- testing(split)
+```
+
+```{r,Simple linear regression}
+simple_recipe <- recipe(carat ~ x, data = diamonds_clean) %>%
+step_normalize(x)
+
+simple_mod <- linear_reg() %>% set_engine("lm") %>% 
+set_mode("regression")
+
+simple_wf <- workflow() %>% add_recipe(simple_recipe) %>%
+add_model(simple_mod)
+
+simple_fit <- fit(simple_wf, data = train_data) 
+simple_pred <- predict(simple_fit, test_data) %>% bind_cols(test_data)
+head(simple_pred)
+```
+
+This simple model suggests a clear but limited linear pattern: diamonds with longer dimensions (x) tend to have higher carat weights. However, the model might underperform for diamonds with irregular shapes or proportions because it ignores other important dimensions like y and z, and qualities like cut and clarity.
+
+### 3.4.1 R-squared for simple model
+
+```{r}
+simple_test_r2 <- simple_pred %>%
+  summarise(r2 = cor(.pred, carat)^2)
+print(simple_test_r2)
+```
+
+The R-squared value of 0.9578 indicates that approximately 95.78% of the variation in carat can be explained by the model using just the x dimension. This suggests a very strong linear relationship between the width (x) of the diamond and its weight (carat). In other words, the simple linear regression model is highly effective at predicting carat from the x value alone.
+
+### 3.5 Multiple Regression with Quantitative and Qualitative Predictors
+
+```{r}
+multi_recipe <- recipe(carat ~ x + depth + table + cut + color + clarity, data = diamonds_clean) %>% 
+  step_poly(x, degree = 2) %>% step_dummy(all_nominal_predictors()) %>% 
+  step_normalize(all_numeric_predictors())
+
+multi_mod <- linear_reg() %>% set_engine("lm") %>% 
+  set_mode("regression")
+
+multi_wf <- workflow() %>% 
+  add_recipe(multi_recipe) %>% 
+  add_model(multi_mod)
+
+multi_fit <- fit(multi_wf, data = diamonds_clean)
+multi_fit
+
+```
+
+The regression model predicts the carat value when numeric predictors are set to their mean and categorical variables are at their reference levels. Positive coefficients, like for x_poly_2 (0.0925), suggest a strong nonlinear relationship, where increasing the predictor results in a higher predicted carat value. Negative coefficients, like for clarity_SI2 (-0.00364) or cut_Premium (-0.00437), indicate that these categories have a negative influence on the predicted carat compared to the baseline category.
+
+### 3.5.1 Extract coefficients
+
+```{r}
+tidy(multi_fit) 
+```
+
+This table shows how different diamond features (like color and clarity) affect their price. The numbers in the "estimate" column tell us how much each feature changes the price—negative values mean lower prices, while positive values mean higher prices. For example, diamonds with better clarity (like VVS2) have higher prices (smaller negative estimates), while certain colors (like J) surprisingly increase the price (positive estimate), which might be unusual. The "p-value" shows how reliable these results are, with very small numbers(\< 0.05) meaning there is an effect.
+
+### 3.5.2 Model performance
+
+```{r}
+multi_metrics <- glance(multi_fit) %>% 
+  dplyr:: select(r.squared, adj.r.squared, AIC, BIC, statistic, p.value) 
+multi_metrics
+```
+
+With the high r.squared (0.997) means the model captures 99.7% of price variation, suggesting an extremely strong fit. The tiny p.value (0) confirms the results are statistically significant, while the negative AIC and BIC values indicate a well-optimized model despite its complexity.
+
+### 3.5.3 Train-Test Split
+
+```{r}
+set.seed(12)
+split <- initial_split(diamonds_clean, prop = 0.8)
+train_data <- training(split)
+test_data <- testing(split)
+
+multi_fit_train <- fit(multi_wf, data = train_data)
+multi_pred <- predict(multi_fit_train, test_data) %>%
+  bind_cols(test_data)
+```
+
+### 3.5.4 R-squared for test set
+
+```{r}
+test_r2 <- multi_pred %>%
+  summarise(r2 = cor(.pred, carat)^2) %>%
+  print()
+```
+
+### 3.5.5 Predicted vs Actual Plot
+
+```{r}
+pred_plot <- ggplot(multi_pred, aes(x = carat, y = .pred)) +
+  geom_point(alpha = 0.5) +
+  geom_abline(color = "red") +
+  labs(title = "Predicted vs Actual Carat Values", x = "Actual Carat", y = "Predicted Carat")
+pred_plot
+```
+
+### 3.5.6 Residual Plot
+
+```{r}
+residuals <- multi_pred %>%
+  mutate(resid = carat - .pred)
+resid_plot <- ggplot(residuals, aes(x = .pred, y = resid)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = 0, color = "red") +
+  labs(title = "Residuals vs Fitted Values", x = "Fitted Carat", y = "Residuals")
+resid_plot
+```
+
+## 3.6 Conclusion
+
+The simple linear regression model, using the x dimension, achieved an R-squared of 0.9578, indicating that 95.78% of carat variation is explained by width alone. The multiple regression model, incorporating x, depth, table, cut, color, clarity, and a quadratic term for x, drastically improved performance with an R-squared of 0.998 on the test set, capturing 99.8% of carat variation. The residual plot, showing residuals (actual minus predicted carat) versus fitted values, displayed a random scatter around the horizontal line at zero, indicating no systematic bias or patterns in the model’s errors. This randomness confirms the multiple regression model’s excellent fit, as it accurately captures the data’s structure without under- or over-predicting.This near-perfect fit, supported by low AIC/BIC values and random residuals, confirms the model’s robustness and accuracy. Key insights include the dominant influence of x, significant but smaller effects of categorical predictors, and a surprising positive effect of color_J. These results highlight the power of combining quantitative and qualitative predictors and modeling nonlinear relationships, offering a reliable tool for carat estimation in jewelry applications.PARENT AND FAMILY INVOLVEMENT DATASET
+
+## 4 . Parent and Family Involvement (PFI) dataset analysis
+
+##  4.1 Introduction
+
+The Parent and Family Involvement (PFI) dataset analysis, conducted on the 2019 PFI dataset (with references to 2016 data), investigates factors influencing K-12 students’ academic performance, measured by SEGRADES (categorized as Mostly A’s to No Grade). The analysis employs multinomial logistic regression, linear discriminant analysis (LDA), and polynomial regression to predict student grades using predictors such as school choice (SPUBCHOIX), family engagement (FSPTMTNG, FHHELP), homework hours (FHWKHRS), absenteeism (SEABSNT), parent education (PARGRADEX), and region (CENREG). The workflow includes data preprocessing, EDA, model fitting, and performance evaluation, with insights drawn to inform initiatives like GVSU’s K-12 Connect.
+
+### 4.1 Loading the dataset
+
+```{r loading data, include=FALSE}
+pfi_data_2019 <- pfi_data <- read_excel("~/SharedProjects/Zeitler/sta631/Project2/pfi-data.xlsx", 
+    sheet = "curated 2019")
+
+```
+
+### 4.2 A glimpse of the dataset
+
+```{r}
+head(pfi_data_2019) 
+```
+
+### 4.3 Data Cleaning and Preprocessing
+
+```{r}
+# Function to calculate mode
+get_mode <- function(x) {
+  ux <- unique(x[!is.na(x)])
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+# Replace missing values with mode for categorical variables
+pfi_data_2019 <- pfi_data_2019 %>%
+  mutate(
+    across(where(is.factor), ~ replace(., is.na(.), get_mode(.)))
+  )
+
+# Check for remaining missing values
+colSums(is.na(pfi_data_2019))
+```
+
+The custom function get_mode() replaces missing values in categorical variables with their mode. colSums(is.na()) checks for remaining missing values.
+
+### 4.4 Subset to relevant variables and convert to factors where appropriate
+
+```{r}
+pfi_data_2019<- pfi_data_2019 %>%
+  dplyr::select(SEGRADES,SPUBCHOIX, PARGRADEX, CENREG, 
+         FHHELP,FHWKHRS, FSPTMTNG,SEABSNT)%>%
+    mutate(across(where(is.character), factor)) # Convert categorical variables to factors
+```
+
+```{#Histogram of SEGRADES}
+{r}
+ggplot(pfi_data_2019, aes(x = SEGRADES)) +
+  geom_histogram(bins = 15, fill = "lightgreen", color = "black", alpha = 0.7) +
+  labs(title = "Histogram of Overall Performance of Students in 2016(SEGRADEQ, 2019)",
+       x = "Student Performance",
+       y = "Frequency") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.1))
+```
+
+The histogram of SEGRADES showed the distribution of student grades, likely skewed toward higher grades (Mostly A’s and B’s), with fewer students in lower grade categories (Mostly C’s, D’s, or lower) and No Grade. This suggests an imbalanced dataset, which poses challenges for classification.
+
+## 4.5 Recode variables in Dataset
+
+```{r}
+pfi_data_2019 <- pfi_data_2019 %>%
+  mutate(
+    # SEGRADES: Student's grades
+    SEGRADES_Letter = case_when(
+      SEGRADES == 1 ~ "Mostly A's",
+      SEGRADES == 2 ~ "Mostly B's",
+      SEGRADES == 3 ~ "Mostly C's",
+      SEGRADES == 4 ~ "Mostly D's or lower",
+      SEGRADES == 5 ~ "No Grade",
+      SEGRADES == -1 ~ "Valid Skip",
+      TRUE ~ as.character(SEGRADES)
+    ),
+    SEGRADES_modified = factor(SEGRADES_Letter, levels = c("Mostly A's", "Mostly B's", "Mostly C's", "Mostly D's or lower", "No Grade", "Valid Skip")),
+
+    # SPUBCHOIX: Public school choice
+    SPUBCHOIX_Y_N= case_when(
+      SPUBCHOIX == 1 ~ "Yes",
+      SPUBCHOIX == 2 ~ "No",
+      SPUBCHOIX == 3~ "Don't Know",
+      SPUBCHOIX == -1 ~ "Valid Skip",
+      TRUE ~ as.character(SPUBCHOIX)
+    ),
+    SPUBCHOIX_modified = factor(SPUBCHOIX_Y_N, levels = c("Yes", "No", "Valid Skip","Don't Know")),
+
+    # PARGRADEX: Parent's highest education level
+    PARGRADEX_sch = case_when(
+      PARGRADEX == 1 ~ "Less than high school",
+      PARGRADEX == 2 ~ "High school graduate",
+      PARGRADEX == 3 ~ "Some college",
+      PARGRADEX == 4 ~ "College Graduate",
+      PARGRADEX == 5 ~ "Graduate/Professional School",
+      TRUE ~ as.character(PARGRADEX)
+    ),
+    PARGRADEX_modified = factor(PARGRADEX_sch, levels = c("Less than high school", "High school graduate", "Some college", "College Graduate", "Graduate/Professional School")),
+
+    # CENREG: Census region
+    CENREG_reg = case_when(
+      CENREG == 1 ~ "Northeast",
+      CENREG == 2 ~ "South",
+      CENREG == 3 ~ "Midwest",
+      CENREG == 4 ~ "West",
+      TRUE ~ as.character(CENREG)
+    ),
+    CENREG_modified = factor(CENREG_reg, levels = c("Northeast", "Midwest", "South", "West")),
+
+    # FHHELP: Frequency of family help with homework
+    FHHELP_week = case_when(
+      FHHELP == 1 ~ "Less than once a week",
+      FHHELP == 2 ~ "1 to 2 days a week",
+      FHHELP == 3 ~ "3 to 4 days a week",
+      FHHELP == 4 ~ "5 or more days a week",
+      FHHELP == 5 ~ "Never",
+      FHHELP == -1 ~ "Valid Skip",
+      TRUE ~ as.character(FHHELP)
+    ),
+    FHHELP_modified = factor(FHHELP_week, levels = c("Less than a week", "1 to 2 days a week", "3 to 4 days a week", "5 or more days a week", "Never", "Valid Skip")),
+
+    
+    # FSPTMTNG: Family participation in school meetings
+    FSPTMTNG_Y_N = case_when(
+      FSPTMTNG == 1 ~ "Yes",
+      FSPTMTNG == 2 ~ "No",
+      FSPTMTNG == -1 ~ "Valid Skip",
+      TRUE ~ as.character(FSPTMTNG)
+    ),
+    FSPTMTNG_modified = factor(FSPTMTNG_Y_N, levels = c("Yes", "No", "Valid Skip")),
+
+    # SEABSNT: Student absenteeism
+    SEABSNT_day = case_when(
+      SEABSNT == -1 ~ "Valid Skip",
+      SEABSNT == 1 ~ "0 to 5 days",
+      SEABSNT == 2 ~ "6 to 10 days",
+      SEABSNT == 3 ~ "11 to 20 days",
+      SEABSNT == 4 ~ "More than 20 days",
+      TRUE ~ as.character(SEABSNT)
+    ),
+    SEABSNT_modified = factor(SEABSNT_day, levels = c("0 to 5 days", "6 to 10 days", "11 to 20 days", "More than 20 days", "Valid Skip"))
+  )
+```
+
+```{# Remove Temporary Column}
+{r}
+# SEABSNT_Cat column
+pfi_data_2019 <- pfi_data_2019 %>%
+  dplyr::select(-SEGRADES_Letter)  # Removes the SEABSNT_Cat column
+```
+
+## 4.6 Exploratory Data Analysis Plots with ggbivariate
+
+```{r}
+# Create the plot and assign it to a variable
+my_plot_2019 <- ggbivariate(
+  data = pfi_data_2019,
+  outcome = "SEGRADES_modified",
+  explanatory = c("SEABSNT_modified")
+) +
+labs(title = "Students Performance by Student's Absenteeism in School for 2019") +
+theme_minimal() +
+theme(
+  plot.title = element_text(size = 8, face = "bold", hjust = 0.3),
+  axis.text.y = element_text(size = 8),  
+  axis.text.x = element_text(size = 8),  
+  legend.text = element_text(size = 10),
+  legend.title = element_text(size = 10),  
+  legend.position = "bottom", 
+  strip.text.y = element_text(size = 8, angle = 0),  
+  text = element_text(size = 8)  
+)
+my_plot_2019
+```
+
+The bivariate graph illustrates student performance (SEGRADES_modified) by absenteeism (SEABSNT_modified) in 2019, showing that students absent 0–5 days have the highest proportion of Mostly A’s (52.1%) and lowest Mostly D’s or lower (2.6%). As absenteeism increases (e.g., More than 20 days), Mostly A’s drop to 25.5%, while Mostly C’s (26.1%) and D’s (13.4%) rise, indicating a clear negative correlation between absenteeism and academic performance. The "Valid Skip" category, entirely pink, suggests all such students fall into this label, likely due to data coding or missingness.
+
+```{r}
+# Create the plot for 2019 and save
+family_help_2019 <- ggbivariate(
+  data = pfi_data_2019,
+  outcome = "SEGRADES_modified",
+  explanatory = c("FHHELP_week")
+) +
+labs(title = "Students Performance by Family Help in The Year 2019") +
+theme_minimal() +
+theme(
+  plot.title = element_text(size = 8, face = "bold", hjust = 0.3),  
+  axis.text.y = element_text(size = 8),
+  axis.text.x = element_text(size = 8),
+  legend.text = element_text(size = 10),
+  legend.title = element_text(size = 10),
+  legend.position = "bottom", 
+  strip.text.y = element_text(size = 8, angle = 0),  
+  text = element_text(size = 8)  
+)
+
+ggsave("students_performance_family_help_2019.png", plot = family_help_2019, width = 8, height = 6, dpi = 300)
+family_help_2019
+```
+
+The bivariate chart displays student performance (SEGRADES_modified) by frequency of family help (FHHELP_week) in 2019, showing that students receiving help 1–2 days a week have the highest proportion of Mostly A’s (48.0%) and B’s (30.0%). As family help increases (e.g., 5+ days a week), Mostly A’s drop to 41.8%, and No Grade rises to 21.0%, suggesting excessive help may correlate with academic struggles or non-graded students. Conversely, students with no help (Never) have a high Mostly A’s rate (58.8%), indicating that family help is not a strong significant factor of student grade.
+
+```{r}
+# Create the plot for 2016 and save
+engagement_2019 <- ggbivariate(
+  data = pfi_data_2019,
+  outcome = "SEGRADES_modified",
+  explanatory = c("FSPTMTNG_Y_N")
+) +
+labs(title = "Students Performance by Engagement in School Activities for The Year 2019") +
+theme_minimal() +
+theme(
+  plot.title = element_text(size = 8, face = "bold", hjust = 0.3),  
+  axis.text.y = element_text(size = 8),
+  axis.text.x = element_text(size = 8),
+  legend.text = element_text(size = 10),
+  legend.title = element_text(size = 10),
+  legend.position = "bottom", 
+  strip.text.y = element_text(size = 8, angle = 0),  
+  text = element_text(size = 8)  
+)
+engagement_2019 
+```
+
+The chart shows student performance (SEGRADES_modified) by family engagement in school activities (FSPTMTNG_Y_N) for 2019, revealing that students whose families participate (Yes) have a higher proportion of Mostly A’s (49.4%) compared to those who do not (No, 49.1%). Non-participating families (No) see slightly more Mostly C’s (8.9%) and D’s or lower (7.7%) than participating ones (7.6% C’s, 1.4% D’s), suggesting a modest positive impact of engagement. The "Valid Skip" category shows a different distribution (35.7% A’s, 43.1% B’s), likely reflecting data-specific coding or missingness.
+
+```{r}
+# Plot for 2019 (corrected title)
+school_choice_2019 <- ggbivariate(
+  data = pfi_data_2019,
+  outcome = "SEGRADES_modified",
+  explanatory = c("SPUBCHOIX_Y_N")
+) +
+labs(title = "Students Performance by School Choice in 2019") +  # Corrected to 2019
+theme_minimal() +
+theme(
+    plot.title = element_text(size =8, face = "bold", hjust = 0.3),  
+    axis.text.y = element_text(size = 8),
+    axis.text.x = element_text(size = 8),
+    legend.text = element_text(size = 10),
+    legend.title = element_text(size = 10),
+    legend.position = "bottom", 
+    strip.text.y = element_text(size = 8, angle = 0),  
+    text = element_text(size = 8)  
+)
+
+ggsave("students_performance_school_choice_2019.png", plot = school_choice_2019, width = 8, height = 6, dpi = 300)
+school_choice_2019
+```
+
+The chart illustrates student performance (SEGRADES_modified) by school choice (SPUBCHOIX_Y_N) in 2019, showing that students with public school choice (Yes) have a higher proportion of Mostly A’s (51.7%) compared to those without (No, 49.4%) or unsure (Don’t Know, 45.4%). Lower grades (Mostly C’s and D’s or lower) are slightly more common in the Don’t Know group (8.7% C’s, 1.4% D’s) than in Yes (8.2% C’s, 1.1% D’s) or No (8.2% C’s, 1.2% D’s), indicating a modest benefit of school choice. The "Valid Skip" category, entirely pink (100%), suggests all such students are coded as Valid Skip, likely due to missing or inapplicable data.
+
+### 4.7 MULTINOMIAL LOGISTIC REGRESSION USING THE Parent and Family Involvement DATASET
+
+```{r Multinomial Logistic Regression Pipeline, include=TRUE}
+
+# ---------------------------
+# 1. Data Preparation
+# ---------------------------
+pfi_2019_final <- pfi_data_2019 %>%
+  dplyr::select(SEGRADES, SPUBCHOIX, PARGRADEX, CENREG, FHHELP, FHWKHRS, FSPTMTNG, SEABSNT) %>%
+  mutate(SEGRADES = as.factor(SEGRADES))
+
+# Create an 80/20 train-test split (stratify on SEGRADES)
+data_split <- initial_split(pfi_2019_final, prop = 0.8, strata = SEGRADES)
+train_data <- training(data_split)
+test_data  <- testing(data_split)
+
+# ---------------------------
+# 2. Forward Selection using stepAIC
+# ---------------------------
+null_model <- multinom(SEGRADES ~ 1, data = train_data, trace = FALSE)
+full_model <- multinom(SEGRADES ~ ., data = train_data, trace = FALSE)
+
+forward_model <- stepAIC(null_model,
+                         scope = list(lower = ~1, upper = formula(full_model)),
+                         direction = "forward",
+                         trace = FALSE)
+
+selected_formula <- formula(forward_model)
+selected_vars <- all.vars(selected_formula)[-1]
+selected_formula_final <- as.formula(paste("SEGRADES ~", paste(selected_vars, collapse = " + ")))
+
+cat("Selected Model Formula:\n")
+print(selected_formula_final)
+
+# ---------------------------
+# 3. Update Recipe with Preprocessing
+# ---------------------------
+# Define categorical variables for mutation
+categorical_vars <- c("SPUBCHOIX", "PARGRADEX", "CENREG", "SEABSNT")
+
+selected_recipe <- recipe(selected_formula_final, data = train_data) %>%
+  step_mutate(across(all_of(categorical_vars), as.factor)) %>%
+  step_novel(all_nominal_predictors()) %>%   # Handle unseen levels in test data
+  step_dummy(all_nominal_predictors()) %>%
+  step_nzv(all_predictors())
+
+# ---------------------------
+# 4. Model Specification & Workflow
+# ---------------------------
+multinom_spec <- multinom_reg() %>%
+  set_engine("nnet", trace = FALSE) %>%
+  set_mode("classification")
+
+multinom_workflow <- workflow() %>%
+  add_model(multinom_spec) %>%
+  add_recipe(selected_recipe)
+
+# ---------------------------
+# 5. Model Evaluation
+# ---------------------------
+# (a) Cross-Validation on the Training Data
+cv_splits <- vfold_cv(train_data, v = 5, strata = SEGRADES)
+
+cv_results <- multinom_workflow %>% 
+  fit_resamples(
+    resamples = cv_splits,
+    metrics = metric_set(accuracy, kap),
+    control = control_resamples(save_pred = TRUE)
+  )
+
+cat("Cross-Validation Metrics on Training Data:\n")
+print(collect_metrics(cv_results))
+
+# (b) Final Model Evaluation on the Holdout Test Set
+# Fit the final model manually so we can get predicted probabilities
+final_model_fit <- fit(multinom_workflow, data = train_data)
+
+# Get predictions on test set (with probabilities)
+final_predictions <- predict(final_model_fit, new_data = test_data, type = "prob") %>%
+  bind_cols(predict(final_model_fit, new_data = test_data)) %>%  # adds .pred_class
+  bind_cols(test_data)
+
+# Create a confusion matrix
+final_cm <- conf_mat(final_predictions, truth = SEGRADES, estimate = .pred_class)
+cat("Confusion Matrix on Test Data:\n")
+print(final_cm)
+
+# ---------------------------
+# 6. Residual Analysis
+# ---------------------------
+# Add a column with the predicted probability for the predicted class and a flag for correctness.
+final_predictions <- final_predictions %>%
+  rowwise() %>%
+  mutate(pred_prob = cur_data()[[paste0(".pred_", .pred_class)]]) %>%
+  ungroup() %>%
+  mutate(correct = (.pred_class == SEGRADES))
+
+# 1. Plot Prediction Confidence by True Grade
+ggplot(final_predictions, aes(x = SEGRADES, y = pred_prob, fill = correct)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Prediction Confidence by True Grade",
+    x = "Actual Grade",
+    y = "Predicted Class Probability",
+    fill = "Prediction Correct?"
+  ) +
+  theme_minimal()
+
+# 2. Plot Confusion Matrix Heatmap
+autoplot(final_cm, type = "heatmap") +
+  labs(title = "Confusion Matrix Heatmap")
+
+# 3. Show Top 10 Lowest Confidence Incorrect Predictions
+worst_predictions <- final_predictions %>%
+  filter(!correct) %>%
+  arrange(pred_prob) %>%
+  slice_head(n = 10)
+
+cat("Top 10 Lowest Confidence Incorrect Predictions:\n")
+print(dplyr::select(worst_predictions, SEGRADES, .pred_class, pred_prob, correct))
+
+# 4. Optional: Accuracy by True Class
+accuracy_by_class <- final_predictions %>%
+  group_by(SEGRADES) %>%
+  summarize(
+    accuracy = mean(correct),
+    avg_confidence = mean(pred_prob),
+    .groups = "drop"
+  )
+
+cat("Per-Class Accuracy and Average Confidence:\n")
+print(accuracy_by_class)
+```
+
+**4.7.1 Overview**
+
+In this analysis,I applied a systematic modelling workflow using tidymodels to the pfi datasets from 2019. The primary objective was to assess model quality—particularly focusing on how well the model captures variation in the data and their overall goodness of fit.
+
+**4.7.2 Modeling process**
+
+For this dataset, I began by selecting eight key variables: one outcome variable (SEGRADES) and seven predictors related to school choice and family engagement. To facilitate classification, SEGRADES was converted to a factor. An 80/20 stratified split was then applied to create representative training and holdout test sets.
+
+**4.7.3 Forward Selection with AIC**
+
+Using the stepAIC() function from the MASS package,I performed a forward selection to identify the most informative predictors. In the 2019 dataset, the process selected PARGRADEX, FHWKHRS, FHHELP, SEABSNT, CENREG,SPUBCHOIX and FSPTMTNG (frequency of parent–teacher meetings). This suggests that family engagement, particularly through regular parent–teacher interactions, may have gained importance over time, potentially enhancing the model’s explanatory power.
+
+**4.7.4 Recipe Creation and Model Fitting** Preprocessing was systematically handled through a recipe that converted selected predictors to factors, applied dummy coding to categorical variables, and removed near-zero variance predictors to mitigate computational challenges. Additionally, the recipe was designed with a step to handle unseen levels in the test data, ensuring robustness in the final evaluation. For model fitting, a multinomial logistic regression was specified using multinom_reg() with the nnet engine. We first assessed model performance through 5-fold cross-validation on the training data, using metrics such as accuracy and Cohen’s kappa.The 2019 model achieved a cross-validated accuracy of approximately 50% and a kappa of 0.092.
+
+### 4.8 Linear Discriminant Analysis(LDA)
+
+```{r}
+# Split the data into training and testing sets (80/20 split, stratified by SEGRADES_Letter)
+set.seed(123)
+data_split <- initial_split(pfi_data_2019, prop = 0.8, strata = SEGRADES_modified)
+train_data <- training(data_split)
+test_data <- testing(data_split)
+
+# Define the LDA model specification
+lda_spec <- discrim_linear() %>%
+  set_engine("MASS") %>%
+  set_mode("classification")
+
+# Create a recipe for preprocessing
+lda_recipe <- recipe(SEGRADES_modified ~ SEABSNT_modified + FHHELP_modified + FSPTMTNG_modified + 
+                     CENREG_modified + PARGRADEX_modified + SPUBCHOIX_modified+ FHWKHRS, 
+                     data = train_data) %>%
+  step_dummy(all_nominal_predictors()) %>%  # Convert categorical variables to dummy variables
+  step_nzv(all_predictors()) %>%            # Remove near-zero variance predictors
+  step_normalize(all_numeric_predictors())  # Normalize numeric predictors (FHWKHRS)
+
+# Combine into a workflow
+lda_workflow <- workflow() %>%
+  add_model(lda_spec) %>%
+  add_recipe(lda_recipe)
+print(lda_workflow)
+```
+
+Recipe Creation and Model Fitting Preprocessing was systematically handled through a recipe that converted selected predictors to factors, applied dummy coding to categorical variables, and removed near-zero variance predictors to mitigate computational challenges. Additionally, the recipe was designed with a step to handle unseen levels in the test data, ensuring robustness in the final evaluation.
+
+```{r, LDA Fit}
+# Fit the model on the training data
+lda_fit <- fit(lda_workflow, data = train_data)
+
+# Display the model fit
+print(lda_fit)
+```
+
+The LDA model, fitted on the 2016 training data, separates "Mostly A's" (45.4% of data) with higher homework hours (0.17) and fewer absences (0.06 for 0-5 days) from "No Grade" students, who have the least homework (-0.38) but more frequent family help (0.28 for 5+ days). Linear discriminants emphasize homework (FHWKHRS, -0.53 on LD1) and low absenteeism as key factors distinguishing higher grades, with lower grades showing negative trends in these areas. The "Valid Skip" group being empty limits the model’s completeness, and while it highlights these patterns, its performance isn’t assessed here beyond prior test accuracy (\~50.9%).
+
+### 4.8.1 Cross Validation
+
+```{r}
+set.seed(120)
+# Define 5-fold cross-validation splits, stratified by SEGRADES_Letter
+cv_splits <- vfold_cv(train_data, v = 5, strata = SEGRADES_modified)
+
+# Perform cross-validation with accuracy and kappa metrics
+cv_results <- lda_workflow %>%
+  fit_resamples(
+    resamples = cv_splits,
+    metrics = metric_set(accuracy, kap),
+    control = control_resamples(save_pred = TRUE)
+  )
+
+# Display cross-validation metrics
+cat("Cross-Validation Metrics for LDA on Training Data (2016):\n")
+collect_metrics(cv_results) %>% print()
+
+# Fit the model on the full training data
+lda_fit <- fit(lda_workflow, data = train_data)
+```
+
+The model correctly predicts 48% of the cases on average across 5 folds, with a small variation (standard error \~0.005), indicating stable but modest performance.
+
+```{r, warning=FALSE,message=FALSE}
+# Predict on the test set
+lda_predictions <- predict(lda_fit, new_data = test_data) %>%
+  bind_cols(test_data %>% dplyr::select(SEGRADES_modified))
+head(lda_predictions)
+```
+
+### 4.8.2 LDA Confusion Matrix for Predicted versus Actual Grade
+
+```{r, confusion matrix}
+# Evaluate model performance with a confusion matrix
+lda_conf_mat <- conf_mat(lda_predictions, truth = SEGRADES_modified, estimate = .pred_class)
+# Visualize the confusion matrix as a heatmap
+autoplot(lda_conf_mat, type = "heatmap") +
+  labs(title = "LDA Confusion Matrix: Predicted vs. Actual Grades (2019)",
+       x = "Predicted Class",
+       y = "Actual Class") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+The model most accurately predicted "Mostly A's" (831 correct), but also misclassified a large number into "Mostly B's" (440) and "No Grade" (219). Overall, there’s decent accuracy for top-performing students but some confusion in distinguishing lower grade categories.
+
+### 4.8.3 Recipe with polynomial terms (degree 2) for numeric predictors
+
+```{r, warning=FALSE,message=FALSE}
+# Polynomial model built independently
+poly_recipe <- recipe(SEGRADES_modified ~ ., data = train_data) %>%
+  step_dummy(all_nominal_predictors()) %>%
+  step_normalize(all_numeric_predictors()) %>%
+  step_poly(FHWKHRS, degree = 2) %>%
+  step_unknown(all_nominal_predictors())
+
+poly_mod <- multinom_reg() %>% set_engine("nnet")
+
+poly_wf <- workflow() %>%
+  add_recipe(poly_recipe) %>%
+  add_model(poly_mod)
+
+# Fit polynomial model
+poly_fit <- fit(poly_wf, data = train_data)
+
+# Cross-validation
+poly_folds <- vfold_cv(train_data, v = 5, strata = SEGRADES_modified)
+poly_cv <- fit_resamples(poly_wf, resamples = poly_folds, metrics = metric_set(accuracy))
+collect_metrics(poly_cv)
+
+# Evaluate on test set
+poly_test_pred <- predict(poly_fit, test_data) %>%
+  bind_cols(test_data)
+
+test_accuracy <- poly_test_pred %>%
+  accuracy(truth = SEGRADES_modified, estimate = .pred_class)
+
+test_accuracy
+```
+
+**Model Performance and Quality Assessment** Multinomial logistic regression (49.5% accuracy), LDA (48% accuracy), and polynomial regression (98.2% accuracy), with the latter performing best but showing potential overfitting. Confusion matrices revealed that models over-predicted Mostly A’s and B’s, struggling with lower grades (C’s, D’s) due to class imbalance. Residual analyses, like prediction confidence plots, showed higher confidence for correct Mostly A’s predictions but highlighted misclassification issues for rarer classes.
+
+**Discussion** Absenteeism strongly impacts grades, with low absenteeism (0–5 days) linked to 52.1% Mostly A’s, while higher absenteeism (More than 20 days) increases Mostly C’s (26.1%) and D’s (13.4%). Family engagement (e.g., parent-teacher meetings) and moderate homework help improve grades, but excessive help (5+ days) correlates with lower performance. Class imbalance and preprocessing issues (e.g., NA levels, collinearity) limited model performance, especially for multinomial and LDA models.
+
+**Conclusion** Polynomial regression excelled (98.2% accuracy) but needs validation due to potential overfitting; other models (multinomial, LDA) showed modest performance due to data challenges. Reducing absenteeism and promoting balanced family involvement can boost student success, offering actionable insights for programs like GVSU’s K-12 Connect. Future improvements include addressing class imbalance (e.g., oversampling) and resolving preprocessing issues to enhance model reliability.
+
+# 5. RIDGE REGRESSION
+
+This analysis applies ridge regression to the Auto dataset to predict acceleration using key predictors (mpg, cylinders, displacement, horsepower, weight), addressing multicollinearity issues identified in exploratory data analysis. By removing less relevant variables (name, origin, year), the model focuses on numeric predictors, leveraging ridge regression's L2 regularization to improve predictive performance.
+
+```{r}
+set.seed(120)
+# Load and preprocess data
+auto <- Auto %>%
+  dplyr::select(-name, -origin, -year) 
+```
+
+The Auto dataset is preprocessed by removing name, origin, and year, leaving mpg, cylinders, displacement, horsepower, weight, and acceleration. A train-test split (80/20) is performed to ensure robust evaluation.
+
+```{r}
+ggpairs(auto)
+```
+
+*Observation*: Acceleration shows weak to moderate linear relationships with predictors. Some predictors are strongly correlated with each other (multicollinearity).
+
+```{r}
+auto_split <- initial_split(auto, prop = 0.8)
+auto_train <- training(auto_split)
+auto_test <- testing(auto_split)
+```
+
+```{r}
+# Create 5-fold CV for tuning
+auto_folds <- vfold_cv(auto_train, v = 5)
+auto_folds
+```
+
+```{r}
+parallel::detectCores()
+# Enable parallel processing
+cores <- parallel::detectCores() - 1
+```
+
+## 5.1 Recipe and Model Set-up
+
+```{r}
+# Recipe for ridge regression (updated to match available predictors)
+ridge_recipe <- recipe(acceleration ~ mpg + cylinders + displacement + horsepower + weight, data = auto_train) %>%
+  step_normalize(all_numeric_predictors())  # No categorical predictors, so no step_dummy()
+
+# Ridge model
+ridge_mod <- linear_reg(penalty = tune(), mixture = 0) %>% set_engine("glmnet")
+ridge_wf <- workflow() %>% add_recipe(ridge_recipe) %>% add_model(ridge_mod)
+ridge_recipe
+
+ridge_tune <- tune_grid(ridge_wf, resamples = vfold_cv(auto_train, v = 5), grid = grid_regular(penalty(), levels = 10))
+best_ridge <- select_best(ridge_tune, metric = "rmse")
+collect_metrics(ridge_tune)
+best_ridge
+
+```
+
+The recipe normalizes the numeric predictors to ensure they’re on the same scale, which is crucial for ridge regression. The model is set up with a tunable penalty (for ridge, mixture = 0 means pure L2 regularization) using glmnet.
+
+```{r}
+ridge_final <- finalize_workflow(ridge_wf, best_ridge) %>% fit(data = auto_train)
+
+# Evaluate on test set
+ridge_rmse <- predict(ridge_final, auto_test) %>% bind_cols(auto_test) %>% rmse(truth = acceleration, estimate = .pred)
+ridge_rmse
+```
+
+## 5.2 Coefficients for Ridge Regression
+
+```{r}
+ridge_fit <- fit(ridge_final, data = auto_train)
+ridge_test_pred <- predict(ridge_fit, auto_test) %>%
+  bind_cols(auto_test) %>%
+  metrics(truth = acceleration, estimate = .pred)
+
+ridge_coefs <- tidy(ridge_fit) %>% filter(estimate != 0, term != "(Intercept)")
+print(ridge_coefs$term)
+```
+
+These are the predictor variables that the Ridge regression model identified as important for predicting acceleration. Since Ridge regression doesn't remove variables entirely (unlike Lasso), these terms have non-zero coefficients, meaning they all contribute to the prediction, even if slightly.
+
+# 5.3 Test predictions
+
+```{r}
+ridge_test_pred <- predict(ridge_fit, auto_test) %>%
+  bind_cols(auto_test) %>%
+  metrics(truth = acceleration, estimate = .pred)
+ridge_test_pred
+```
+
+The Ridge model has a root mean squared error (RMSE) of 1.476, meaning its predictions are, on average, about 1.476 units off from the actual values. It explains 73% of the variance in the target variable (R²), indicating better performance than the Lasso in this case.
+
+# 5.4 Fit full and null models for stepwise selection
+
+```{r}
+
+# Fit full and null models for stepwise selection
+full_model <- lm(acceleration ~ mpg + cylinders + displacement + horsepower + weight, data = auto_train)
+null_model <- lm(acceleration ~ 1, data = auto_train)
+
+# Perform stepwise selection using stats::step explicitly
+stepwise_model <- stats::step(null_model, scope = list(lower = null_model, upper = full_model), direction = "both", trace = 0)
+
+# Verify the class of stepwise_model
+if (!inherits(stepwise_model, "lm")) stop("stepwise_model is not an lm object: ", class(stepwise_model))
+
+# Extract selected predictors
+stepwise_selected <- names(coef(stepwise_model))[-1]  # Exclude intercept
+print("Selected predictors:")
+print(stepwise_selected)
+
+# Create recipe with selected predictors
+stepwise_recipe <- recipe(reformulate(stepwise_selected, "acceleration"), data = auto_train) %>%
+  step_dummy(all_nominal_predictors()) %>%
+  step_normalize(all_numeric_predictors())
+
+# Fit and evaluate the selected model
+lm_mod <- linear_reg() %>% set_engine("lm")
+stepwise_wf <- workflow() %>% add_recipe(stepwise_recipe) %>% add_model(lm_mod)
+stepwise_cv <- fit_resamples(stepwise_wf, resamples = vfold_cv(auto_train, v = 5), metrics = metric_set(rmse))
+stepwise_rmse <- collect_metrics(stepwise_cv)
+
+# Test set performance
+stepwise_fit <- fit(stepwise_wf, data = auto_train)
+test_rmse <- predict(stepwise_fit, auto_test) %>% bind_cols(auto_test) %>% rmse(truth = acceleration, estimate = .pred)
+
+# Output results
+list(Selected_Predictors = stepwise_selected, CV_RMSE = stepwise_rmse$.mean, Test_RMSE = test_rmse$.estimate)
+```
+
+# **6. Conclusion**
+
+The ridge regression model effectively predicts acceleration in the Auto dataset, achieving a test RMSE of 1.747969, demonstrating that a moderate penalty (0.0774) balances model complexity and predictive accuracy while addressing multicollinearity among predictors like weight and horsepower. This analysis, part of Homework 07, highlights the benefits of regularization over traditional methods like stepwise selection (RMSE 2.38), though future improvements could explore reintroducing year and origin with proper encoding to capture additional effects. The process adheres to best practices, ensuring robust evaluation through cross-validation and test set performance, aligning with course principles from "Cross Validation the Right Way."
+
+# 7. Overall Conclusion
+
+This portfolio demonstrates a comprehensive application of statistical modeling techniques to address diverse predictive challenges. The Diamonds analysis achieved near-perfect prediction of carat weights (R-squared of 0.998) by leveraging multiple regression with polynomial terms, revealing the dominant influence of physical dimensions like width (x) and the nuanced effects of qualitative predictors such as color and clarity. The PFI analysis, using multinomial logistic regression, LDA, and polynomial regression, uncovered critical insights into K-12 student performance, with polynomial regression excelling at 98.2% accuracy—though raising concerns about overfitting—while highlighting absenteeism and balanced family engagement as key factors influencing grades. These findings offer actionable insights for initiatives like GVSU’s K-12 Connect, emphasizing the need to reduce absenteeism and optimize family involvement. The Auto analysis effectively applied ridge regression to predict acceleration, achieving a test RMSE of 1.747969 and addressing multicollinearity among predictors like weight and horsepower, demonstrating the power of regularization over traditional methods like stepwise selection (RMSE 2.38). Collectively, these projects showcase my growth in data preprocessing, model selection, and evaluation using the tidymodels framework, with robust validation through train-test splits and cross-validation. Challenges like class imbalance in the PFI dataset and multicollinearity in the Auto dataset taught me the importance of thoughtful preprocessing and model tuning, while successes like the high accuracy in the Diamonds analysis reinforced the value of capturing nonlinear relationships. Moving forward, addressing data limitations (e.g., oversampling for class imbalance) and exploring additional predictors could further enhance model reliability, equipping me with the skills to tackle real-world problems with statistical rigor and practical insight.
+
+This conclusion can be placed at the end of your Quarto document, after the individual analyses, to wrap up your portfolio. It reflects on the results, connects them to broader learning objectives, and suggests future improvements, providing a strong closing statement. Let me know if you’d like to modify it further!

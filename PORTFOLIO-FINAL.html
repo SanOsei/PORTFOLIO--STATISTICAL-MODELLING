@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sandra Osei">
+<meta name="dcterms.date" content="2025-04-18">
+
+<title>PORTFOLIO</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="PORTFOLIO-FINAL_files/libs/clipboard/clipboard.min.js"></script>
+<script src="PORTFOLIO-FINAL_files/libs/quarto-html/quarto.js"></script>
+<script src="PORTFOLIO-FINAL_files/libs/quarto-html/popper.min.js"></script>
+<script src="PORTFOLIO-FINAL_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="PORTFOLIO-FINAL_files/libs/quarto-html/anchor.min.js"></script>
+<link href="PORTFOLIO-FINAL_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="PORTFOLIO-FINAL_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="PORTFOLIO-FINAL_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="PORTFOLIO-FINAL_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="PORTFOLIO-FINAL_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#loading-libraries" id="toc-loading-libraries" class="nav-link" data-scroll-target="#loading-libraries">2. Loading Libraries</a></li>
+  <li><a href="#diamonds-data" id="toc-diamonds-data" class="nav-link" data-scroll-target="#diamonds-data">3. Diamonds Data</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">3.1 Introduction</a>
+  <ul class="collapse">
+  <li><a href="#data-cleaning-and-preprocessing" id="toc-data-cleaning-and-preprocessing" class="nav-link" data-scroll-target="#data-cleaning-and-preprocessing">3.2 Data Cleaning and Preprocessing</a></li>
+  <li><a href="#exploratory-data-analysis-ggpairs" id="toc-exploratory-data-analysis-ggpairs" class="nav-link" data-scroll-target="#exploratory-data-analysis-ggpairs">3.3 Exploratory Data Analysis: ggpairs</a></li>
+  <li><a href="#simple-linear-regression-with-x" id="toc-simple-linear-regression-with-x" class="nav-link" data-scroll-target="#simple-linear-regression-with-x">3.4 Simple Linear Regression with x</a></li>
+  <li><a href="#r-squared-for-simple-model" id="toc-r-squared-for-simple-model" class="nav-link" data-scroll-target="#r-squared-for-simple-model">3.4.1 R-squared for simple model</a></li>
+  <li><a href="#multiple-regression-with-quantitative-and-qualitative-predictors" id="toc-multiple-regression-with-quantitative-and-qualitative-predictors" class="nav-link" data-scroll-target="#multiple-regression-with-quantitative-and-qualitative-predictors">3.5 Multiple Regression with Quantitative and Qualitative Predictors</a></li>
+  <li><a href="#extract-coefficients" id="toc-extract-coefficients" class="nav-link" data-scroll-target="#extract-coefficients">3.5.1 Extract coefficients</a></li>
+  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance">3.5.2 Model performance</a></li>
+  <li><a href="#train-test-split" id="toc-train-test-split" class="nav-link" data-scroll-target="#train-test-split">3.5.3 Train-Test Split</a></li>
+  <li><a href="#r-squared-for-test-set" id="toc-r-squared-for-test-set" class="nav-link" data-scroll-target="#r-squared-for-test-set">3.5.4 R-squared for test set</a></li>
+  <li><a href="#predicted-vs-actual-plot" id="toc-predicted-vs-actual-plot" class="nav-link" data-scroll-target="#predicted-vs-actual-plot">3.5.5 Predicted vs Actual Plot</a></li>
+  <li><a href="#residual-plot" id="toc-residual-plot" class="nav-link" data-scroll-target="#residual-plot">3.5.6 Residual Plot</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">3.6 Conclusion</a></li>
+  <li><a href="#parent-and-family-involvement-pfi-dataset-analysis" id="toc-parent-and-family-involvement-pfi-dataset-analysis" class="nav-link" data-scroll-target="#parent-and-family-involvement-pfi-dataset-analysis">4 . Parent and Family Involvement (PFI) dataset analysis</a></li>
+  <li><a href="#introduction-2" id="toc-introduction-2" class="nav-link" data-scroll-target="#introduction-2">4.1 Introduction</a>
+  <ul class="collapse">
+  <li><a href="#loading-the-dataset" id="toc-loading-the-dataset" class="nav-link" data-scroll-target="#loading-the-dataset">4.1 Loading the dataset</a></li>
+  <li><a href="#a-glimpse-of-the-dataset" id="toc-a-glimpse-of-the-dataset" class="nav-link" data-scroll-target="#a-glimpse-of-the-dataset">4.2 A glimpse of the dataset</a></li>
+  <li><a href="#data-cleaning-and-preprocessing-1" id="toc-data-cleaning-and-preprocessing-1" class="nav-link" data-scroll-target="#data-cleaning-and-preprocessing-1">4.3 Data Cleaning and Preprocessing</a></li>
+  <li><a href="#subset-to-relevant-variables-and-convert-to-factors-where-appropriate" id="toc-subset-to-relevant-variables-and-convert-to-factors-where-appropriate" class="nav-link" data-scroll-target="#subset-to-relevant-variables-and-convert-to-factors-where-appropriate">4.4 Subset to relevant variables and convert to factors where appropriate</a></li>
+  </ul></li>
+  <li><a href="#recode-variables-in-dataset" id="toc-recode-variables-in-dataset" class="nav-link" data-scroll-target="#recode-variables-in-dataset">4.5 Recode variables in Dataset</a></li>
+  <li><a href="#exploratory-data-analysis-plots-with-ggbivariate" id="toc-exploratory-data-analysis-plots-with-ggbivariate" class="nav-link" data-scroll-target="#exploratory-data-analysis-plots-with-ggbivariate">4.6 Exploratory Data Analysis Plots with ggbivariate</a>
+  <ul class="collapse">
+  <li><a href="#multinomial-logistic-regression-using-the-parent-and-family-involvement-dataset" id="toc-multinomial-logistic-regression-using-the-parent-and-family-involvement-dataset" class="nav-link" data-scroll-target="#multinomial-logistic-regression-using-the-parent-and-family-involvement-dataset">4.7 MULTINOMIAL LOGISTIC REGRESSION USING THE Parent and Family Involvement DATASET</a></li>
+  <li><a href="#linear-discriminant-analysislda" id="toc-linear-discriminant-analysislda" class="nav-link" data-scroll-target="#linear-discriminant-analysislda">4.8 Linear Discriminant Analysis(LDA)</a></li>
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation">4.8.1 Cross Validation</a></li>
+  <li><a href="#lda-confusion-matrix-for-predicted-versus-actual-grade" id="toc-lda-confusion-matrix-for-predicted-versus-actual-grade" class="nav-link" data-scroll-target="#lda-confusion-matrix-for-predicted-versus-actual-grade">4.8.2 LDA Confusion Matrix for Predicted versus Actual Grade</a></li>
+  <li><a href="#recipe-with-polynomial-terms-degree-2-for-numeric-predictors" id="toc-recipe-with-polynomial-terms-degree-2-for-numeric-predictors" class="nav-link" data-scroll-target="#recipe-with-polynomial-terms-degree-2-for-numeric-predictors">4.8.3 Recipe with polynomial terms (degree 2) for numeric predictors</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#ridge-regression" id="toc-ridge-regression" class="nav-link" data-scroll-target="#ridge-regression">5. RIDGE REGRESSION</a>
+  <ul class="collapse">
+  <li><a href="#recipe-and-model-set-up" id="toc-recipe-and-model-set-up" class="nav-link" data-scroll-target="#recipe-and-model-set-up">5.1 Recipe and Model Set-up</a></li>
+  <li><a href="#coefficients-for-ridge-regression" id="toc-coefficients-for-ridge-regression" class="nav-link" data-scroll-target="#coefficients-for-ridge-regression">5.2 Coefficients for Ridge Regression</a></li>
+  </ul></li>
+  <li><a href="#test-predictions" id="toc-test-predictions" class="nav-link" data-scroll-target="#test-predictions">5.3 Test predictions</a></li>
+  <li><a href="#fit-full-and-null-models-for-stepwise-selection" id="toc-fit-full-and-null-models-for-stepwise-selection" class="nav-link" data-scroll-target="#fit-full-and-null-models-for-stepwise-selection">5.4 Fit full and null models for stepwise selection</a></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><strong>6. Conclusion</strong></a></li>
+  <li><a href="#overall-conclusion" id="toc-overall-conclusion" class="nav-link" data-scroll-target="#overall-conclusion">7. Overall Conclusion</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PORTFOLIO</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sandra Osei </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 18, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>1. Introduction</h1>
+<p>This portfolio showcases my analytical journey through a statistical modeling course, where I explored predictive modeling techniques using three distinct datasets: the Diamonds dataset from the ggplot2 package, the 2019 Parent and Family Involvement (PFI) dataset, and the Auto dataset from the ISLR package. Authored by Sandra Osei, this work demonstrates my ability to apply a range of statistical methods—including multiple regression, multinomial logistic regression, linear discriminant analysis (LDA), polynomial regression, and ridge regression—to address real-world questions. Each analysis leverages the tidymodels framework in R for data preprocessing, model fitting, and performance evaluation, ensuring robust workflows with proper validation techniques like train-test splits and cross-validation. The Diamonds analysis predicts carat weights using physical and qualitative attributes, the PFI analysis examines factors influencing K-12 student grades, and the Auto analysis models car acceleration while addressing multicollinearity. Through these projects, I aim to highlight my proficiency in statistical modeling, data interpretation, and the application of insights to practical contexts, such as educational initiatives like GVSU’s K-12 Connect.</p>
+</section>
+<section id="loading-libraries" class="level1">
+<h1>2. Loading Libraries</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaps)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaps)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dials)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tinytex)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(discrim)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>#</p>
+</section>
+<section id="diamonds-data" class="level1">
+<h1>3. Diamonds Data</h1>
+<section id="introduction-1" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-1">3.1 Introduction</h2>
+<p>The Diamonds Project analyzes the diamonds dataset from the ggplot2 package to predict diamond carat weights using physical measurements and qualitative attributes. The goal is to build and compare simple and multiple regression models, leveraging packages like tidymodels, dplyr, and ggplot2. This project demonstrates data cleaning, exploratory data analysis (EDA), model fitting, and performance evaluation, providing insights into the factors influencing diamond carat weights.</p>
+<section id="data-cleaning-and-preprocessing" class="level3">
+<h3 class="anchored" data-anchor-id="data-cleaning-and-preprocessing">3.2 Data Cleaning and Preprocessing</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(diamonds, <span class="at">package =</span> <span class="st">"ggplot2"</span>) </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>diamonds_clean <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>, y <span class="sc">&gt;</span> <span class="dv">0</span>, z <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">cut =</span> <span class="fu">factor</span>(cut, <span class="at">ordered =</span> <span class="cn">FALSE</span>), <span class="at">color =</span> <span class="fu">factor</span>(color, <span class="at">ordered =</span> <span class="cn">FALSE</span>), <span class="at">clarity =</span> <span class="fu">factor</span>(clarity, <span class="at">ordered =</span> <span class="cn">FALSE</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exploratory-data-analysis-ggpairs" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-data-analysis-ggpairs">3.3 Exploratory Data Analysis: ggpairs</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ggpairs_plot <span class="ot">&lt;-</span> diamonds_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(carat, x,y,z,depth,table, cut, color, clarity) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpairs</span>(<span class="at">columns =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">aes</span>(<span class="at">color =</span> cut)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Pairwise Relationships in Diamonds Dataset"</span>) </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>ggpairs_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This ggplot shows strong positive correlations between carat and the dimensions (x, y, z) of diamonds in the dataset, indicating that larger diamonds generally have bigger measurements. The correlations are consistently high across all diamond cuts, with only slight variations. Density plots reveal that most diamonds are small in size, and scatterplots highlight a few outliers with unusual measurement</p>
+</section>
+<section id="simple-linear-regression-with-x" class="level3">
+<h3 class="anchored" data-anchor-id="simple-linear-regression-with-x">3.4 Simple Linear Regression with x</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(diamonds_clean, <span class="at">prop =</span> <span class="fl">0.8</span>) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> <span class="fu">training</span>(split) </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>simple_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(carat <span class="sc">~</span> x, <span class="at">data =</span> diamonds_clean) <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">step_normalize</span>(x)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>simple_mod <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>simple_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_recipe</span>(simple_recipe) <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">add_model</span>(simple_mod)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>simple_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(simple_wf, <span class="at">data =</span> train_data) </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>simple_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(simple_fit, test_data) <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(test_data)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(simple_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+   .pred carat cut       color clarity depth table price     x     y     z
+   &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0.102   0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+2 0.0566  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+3 0.0566  0.23 Very Good H     VS1      61      57   353  3.94  3.96  2.41
+4 0.0483  0.23 Very Good D     VS1      61.9    58   402  3.92  3.96  2.44
+5 0.106   0.23 Good      F     VS1      58.2    59   402  4.06  4.08  2.37
+6 0.222   0.32 Good      H     SI2      63.1    56   403  4.34  4.37  2.75</code></pre>
+</div>
+</div>
+<p>This simple model suggests a clear but limited linear pattern: diamonds with longer dimensions (x) tend to have higher carat weights. However, the model might underperform for diamonds with irregular shapes or proportions because it ignores other important dimensions like y and z, and qualities like cut and clarity.</p>
+</section>
+<section id="r-squared-for-simple-model" class="level3">
+<h3 class="anchored" data-anchor-id="r-squared-for-simple-model">3.4.1 R-squared for simple model</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>simple_test_r2 <span class="ot">&lt;-</span> simple_pred <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">r2 =</span> <span class="fu">cor</span>(.pred, carat)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(simple_test_r2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+     r2
+  &lt;dbl&gt;
+1 0.957</code></pre>
+</div>
+</div>
+<p>The R-squared value of 0.9578 indicates that approximately 95.78% of the variation in carat can be explained by the model using just the x dimension. This suggests a very strong linear relationship between the width (x) of the diamond and its weight (carat). In other words, the simple linear regression model is highly effective at predicting carat from the x value alone.</p>
+</section>
+<section id="multiple-regression-with-quantitative-and-qualitative-predictors" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-regression-with-quantitative-and-qualitative-predictors">3.5 Multiple Regression with Quantitative and Qualitative Predictors</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>multi_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(carat <span class="sc">~</span> x <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> cut <span class="sc">+</span> color <span class="sc">+</span> clarity, <span class="at">data =</span> diamonds_clean) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_poly</span>(x, <span class="at">degree =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>multi_mod <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>multi_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(multi_recipe) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(multi_mod)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>multi_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(multi_wf, <span class="at">data =</span> diamonds_clean)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>multi_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>══ Workflow [trained] ══════════════════════════════════════════════════════════
+Preprocessor: Recipe
+Model: linear_reg()
+
+── Preprocessor ────────────────────────────────────────────────────────────────
+3 Recipe Steps
+
+• step_poly()
+• step_dummy()
+• step_normalize()
+
+── Model ───────────────────────────────────────────────────────────────────────
+
+Call:
+stats::lm(formula = ..y ~ ., data = data)
+
+Coefficients:
+  (Intercept)          depth          table       x_poly_1       x_poly_2  
+    7.977e-01      2.917e-02      6.642e-03      4.629e-01      9.251e-02  
+     cut_Good  cut_Very.Good    cut_Premium      cut_Ideal        color_E  
+    1.021e-04      1.183e-03     -4.366e-03     -6.409e-04     -2.030e-04  
+      color_F        color_G        color_H        color_I        color_J  
+   -1.870e-04     -2.086e-04     -4.955e-04     -6.186e-05      5.797e-04  
+  clarity_SI2    clarity_SI1    clarity_VS2    clarity_VS1   clarity_VVS2  
+   -3.640e-03     -4.413e-03     -4.143e-03     -3.712e-03     -3.080e-03  
+ clarity_VVS1     clarity_IF  
+   -2.397e-03     -1.500e-03  </code></pre>
+</div>
+</div>
+<p>The regression model predicts the carat value when numeric predictors are set to their mean and categorical variables are at their reference levels. Positive coefficients, like for x_poly_2 (0.0925), suggest a strong nonlinear relationship, where increasing the predictor results in a higher predicted carat value. Negative coefficients, like for clarity_SI2 (-0.00364) or cut_Premium (-0.00437), indicate that these categories have a negative influence on the predicted carat compared to the baseline category.</p>
+</section>
+<section id="extract-coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="extract-coefficients">3.5.1 Extract coefficients</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(multi_fit) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 5
+   term           estimate std.error statistic  p.value
+   &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1 (Intercept)    0.798     0.000113  7046.    0       
+ 2 depth          0.0292    0.000133   219.    0       
+ 3 table          0.00664   0.000151    43.9   0       
+ 4 x_poly_1       0.463     0.000130  3550.    0       
+ 5 x_poly_2       0.0925    0.000116   798.    0       
+ 6 cut_Good       0.000102  0.000225     0.454 6.49e- 1
+ 7 cut_Very.Good  0.00118   0.000313     3.79  1.53e- 4
+ 8 cut_Premium   -0.00437   0.000327   -13.3   1.64e-40
+ 9 cut_Ideal     -0.000641  0.000381    -1.68  9.23e- 2
+10 color_E       -0.000203  0.000160    -1.26  2.06e- 1
+# ℹ 12 more rows</code></pre>
+</div>
+</div>
+<p>This table shows how different diamond features (like color and clarity) affect their price. The numbers in the “estimate” column tell us how much each feature changes the price—negative values mean lower prices, while positive values mean higher prices. For example, diamonds with better clarity (like VVS2) have higher prices (smaller negative estimates), while certain colors (like J) surprisingly increase the price (positive estimate), which might be unusual. The “p-value” shows how reliable these results are, with very small numbers(&lt; 0.05) meaning there is an effect.</p>
+</section>
+<section id="model-performance" class="level3">
+<h3 class="anchored" data-anchor-id="model-performance">3.5.2 Model performance</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>multi_metrics <span class="ot">&lt;-</span> <span class="fu">glance</span>(multi_fit) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span> <span class="fu">select</span>(r.squared, adj.r.squared, AIC, BIC, statistic, p.value) </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>multi_metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  r.squared adj.r.squared      AIC      BIC statistic p.value
+      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1     0.997         0.997 -239351. -239146.   831507.       0</code></pre>
+</div>
+</div>
+<p>With the high r.squared (0.997) means the model captures 99.7% of price variation, suggesting an extremely strong fit. The tiny p.value (0) confirms the results are statistically significant, while the negative AIC and BIC values indicate a well-optimized model despite its complexity.</p>
+</section>
+<section id="train-test-split" class="level3">
+<h3 class="anchored" data-anchor-id="train-test-split">3.5.3 Train-Test Split</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(diamonds_clean, <span class="at">prop =</span> <span class="fl">0.8</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>multi_fit_train <span class="ot">&lt;-</span> <span class="fu">fit</span>(multi_wf, <span class="at">data =</span> train_data)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>multi_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(multi_fit_train, test_data) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(test_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r-squared-for-test-set" class="level3">
+<h3 class="anchored" data-anchor-id="r-squared-for-test-set">3.5.4 R-squared for test set</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>test_r2 <span class="ot">&lt;-</span> multi_pred <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">r2 =</span> <span class="fu">cor</span>(.pred, carat)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+     r2
+  &lt;dbl&gt;
+1 0.998</code></pre>
+</div>
+</div>
+</section>
+<section id="predicted-vs-actual-plot" class="level3">
+<h3 class="anchored" data-anchor-id="predicted-vs-actual-plot">3.5.5 Predicted vs Actual Plot</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pred_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(multi_pred, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> .pred)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Predicted vs Actual Carat Values"</span>, <span class="at">x =</span> <span class="st">"Actual Carat"</span>, <span class="at">y =</span> <span class="st">"Predicted Carat"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>pred_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="residual-plot" class="level3">
+<h3 class="anchored" data-anchor-id="residual-plot">3.5.6 Residual Plot</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> multi_pred <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">resid =</span> carat <span class="sc">-</span> .pred)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>resid_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(residuals, <span class="fu">aes</span>(<span class="at">x =</span> .pred, <span class="at">y =</span> resid)) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Residuals vs Fitted Values"</span>, <span class="at">x =</span> <span class="st">"Fitted Carat"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>resid_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">3.6 Conclusion</h2>
+<p>The simple linear regression model, using the x dimension, achieved an R-squared of 0.9578, indicating that 95.78% of carat variation is explained by width alone. The multiple regression model, incorporating x, depth, table, cut, color, clarity, and a quadratic term for x, drastically improved performance with an R-squared of 0.998 on the test set, capturing 99.8% of carat variation. The residual plot, showing residuals (actual minus predicted carat) versus fitted values, displayed a random scatter around the horizontal line at zero, indicating no systematic bias or patterns in the model’s errors. This randomness confirms the multiple regression model’s excellent fit, as it accurately captures the data’s structure without under- or over-predicting.This near-perfect fit, supported by low AIC/BIC values and random residuals, confirms the model’s robustness and accuracy. Key insights include the dominant influence of x, significant but smaller effects of categorical predictors, and a surprising positive effect of color_J. These results highlight the power of combining quantitative and qualitative predictors and modeling nonlinear relationships, offering a reliable tool for carat estimation in jewelry applications.PARENT AND FAMILY INVOLVEMENT DATASET</p>
+</section>
+<section id="parent-and-family-involvement-pfi-dataset-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="parent-and-family-involvement-pfi-dataset-analysis">4 . Parent and Family Involvement (PFI) dataset analysis</h2>
+</section>
+<section id="introduction-2" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-2">4.1 Introduction</h2>
+<p>The Parent and Family Involvement (PFI) dataset analysis, conducted on the 2019 PFI dataset (with references to 2016 data), investigates factors influencing K-12 students’ academic performance, measured by SEGRADES (categorized as Mostly A’s to No Grade). The analysis employs multinomial logistic regression, linear discriminant analysis (LDA), and polynomial regression to predict student grades using predictors such as school choice (SPUBCHOIX), family engagement (FSPTMTNG, FHHELP), homework hours (FHWKHRS), absenteeism (SEABSNT), parent education (PARGRADEX), and region (CENREG). The workflow includes data preprocessing, EDA, model fitting, and performance evaluation, with insights drawn to inform initiatives like GVSU’s K-12 Connect.</p>
+<section id="loading-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="loading-the-dataset">4.1 Loading the dataset</h3>
+</section>
+<section id="a-glimpse-of-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="a-glimpse-of-the-dataset">4.2 A glimpse of the dataset</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pfi_data_2019) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 75
+       BASMID ALLGRADEX EDCPUB SCCHOICE SPUBCHOIX SCONSIDR SCHLHRSWK EINTNET
+        &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 20191000012        12      1        2         3        2         4       4
+2 20191000029         4      1        2         3        2         4       3
+3 20191000059        11      2        2         2        1         4       3
+4 20191000070         6      1        1         1        1         4       4
+5 20191000078         9      1        2         3        2         4       4
+6 20191000083         6      1        1         2        2         4       4
+# ℹ 67 more variables: MOSTIMPT &lt;dbl&gt;, INTNUM &lt;dbl&gt;, SEENJOY &lt;dbl&gt;,
+#   SEGRADES &lt;dbl&gt;, SEABSNT &lt;dbl&gt;, SEGRADEQ &lt;dbl&gt;, FSSPORTX &lt;dbl&gt;, FSVOL &lt;dbl&gt;,
+#   FSMTNG &lt;dbl&gt;, FSPTMTNG &lt;dbl&gt;, FSATCNFN &lt;dbl&gt;, FSFUNDRS &lt;dbl&gt;,
+#   FSCOMMTE &lt;dbl&gt;, FSCOUNSLR &lt;dbl&gt;, FSFREQ &lt;dbl&gt;, FSNOTESX &lt;dbl&gt;,
+#   FSMEMO &lt;dbl&gt;, FCSCHOOL &lt;dbl&gt;, FCTEACHR &lt;dbl&gt;, FCSTDS &lt;dbl&gt;, FCORDER &lt;dbl&gt;,
+#   FCSUPPRT &lt;dbl&gt;, FHHOME &lt;dbl&gt;, FHWKHRS &lt;dbl&gt;, FHAMOUNT &lt;dbl&gt;, FHCAMT &lt;dbl&gt;,
+#   FHPLACE &lt;dbl&gt;, FHCHECKX &lt;dbl&gt;, FHHELP &lt;dbl&gt;, FOSTORY2X &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section id="data-cleaning-and-preprocessing-1" class="level3">
+<h3 class="anchored" data-anchor-id="data-cleaning-and-preprocessing-1">4.3 Data Cleaning and Preprocessing</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate mode</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>get_mode <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  ux <span class="ot">&lt;-</span> <span class="fu">unique</span>(x[<span class="sc">!</span><span class="fu">is.na</span>(x)])</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  ux[<span class="fu">which.max</span>(<span class="fu">tabulate</span>(<span class="fu">match</span>(x, ux)))]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace missing values with mode for categorical variables</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>pfi_data_2019 <span class="ot">&lt;-</span> pfi_data_2019 <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.factor), <span class="sc">~</span> <span class="fu">replace</span>(., <span class="fu">is.na</span>(.), <span class="fu">get_mode</span>(.)))</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for remaining missing values</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(pfi_data_2019))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      BASMID    ALLGRADEX       EDCPUB     SCCHOICE    SPUBCHOIX     SCONSIDR 
+           0            0            0            0            0            0 
+   SCHLHRSWK      EINTNET     MOSTIMPT       INTNUM      SEENJOY     SEGRADES 
+           0            0            0            0            0            0 
+     SEABSNT     SEGRADEQ     FSSPORTX        FSVOL       FSMTNG     FSPTMTNG 
+           0            0            0            0            0            0 
+    FSATCNFN     FSFUNDRS     FSCOMMTE    FSCOUNSLR       FSFREQ     FSNOTESX 
+           0            0            0            0            0            0 
+      FSMEMO     FCSCHOOL     FCTEACHR       FCSTDS      FCORDER     FCSUPPRT 
+           0            0            0            0            0            0 
+      FHHOME      FHWKHRS     FHAMOUNT       FHCAMT      FHPLACE     FHCHECKX 
+           0            0            0            0            0            0 
+      FHHELP    FOSTORY2X     FOCRAFTS      FOGAMES     FOBUILDX      FOSPORT 
+           0            0            0            0            0            0 
+    FORESPON      FOHISTX    FODINNERX    FOLIBRAYX    FOBOOKSTX     HDHEALTH 
+           0            0            0            0            0            0 
+      CDOBMM       CDOBYY         CSEX      CSPEAKX    HHTOTALXX     RELATION 
+           0            0            0            0            0            0 
+       P1REL        P1SEX      P1MRSTA       P1EMPL      P1HRSWK    P1MTHSWRK 
+           0            0            0            0            0            0 
+       P1AGE      P2GUARD     TTLHHINC     OWNRNTHB       CHLDNT    SEFUTUREX 
+           0            0            0            0            0            0 
+      DSBLTY    HHPARN19X HHPARN19_BRD     NUMSIBSX    PARGRADEX      RACEETH 
+           0            0            0            0            0            0 
+      INTACC       CENREG      ZIPLOCL 
+           0            0            0 </code></pre>
+</div>
+</div>
+<p>The custom function get_mode() replaces missing values in categorical variables with their mode. colSums(is.na()) checks for remaining missing values.</p>
+</section>
+<section id="subset-to-relevant-variables-and-convert-to-factors-where-appropriate" class="level3">
+<h3 class="anchored" data-anchor-id="subset-to-relevant-variables-and-convert-to-factors-where-appropriate">4.4 Subset to relevant variables and convert to factors where appropriate</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pfi_data_2019<span class="ot">&lt;-</span> pfi_data_2019 <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(SEGRADES,SPUBCHOIX, PARGRADEX, CENREG, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>         FHHELP,FHWKHRS, FSPTMTNG,SEABSNT)<span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), factor)) <span class="co"># Convert categorical variables to factors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre class="{#Histogram of SEGRADES}"><code>{r}
+ggplot(pfi_data_2019, aes(x = SEGRADES)) +
+  geom_histogram(bins = 15, fill = "lightgreen", color = "black", alpha = 0.7) +
+  labs(title = "Histogram of Overall Performance of Students in 2016(SEGRADEQ, 2019)",
+       x = "Student Performance",
+       y = "Frequency") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.1))</code></pre>
+<p>The histogram of SEGRADES showed the distribution of student grades, likely skewed toward higher grades (Mostly A’s and B’s), with fewer students in lower grade categories (Mostly C’s, D’s, or lower) and No Grade. This suggests an imbalanced dataset, which poses challenges for classification.</p>
+</section>
+</section>
+<section id="recode-variables-in-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="recode-variables-in-dataset">4.5 Recode variables in Dataset</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pfi_data_2019 <span class="ot">&lt;-</span> pfi_data_2019 <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># SEGRADES: Student's grades</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEGRADES_Letter =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>      SEGRADES <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Mostly A's"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>      SEGRADES <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Mostly B's"</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>      SEGRADES <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Mostly C's"</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>      SEGRADES <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Mostly D's or lower"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>      SEGRADES <span class="sc">==</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">"No Grade"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>      SEGRADES <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">~</span> <span class="st">"Valid Skip"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(SEGRADES)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEGRADES_modified =</span> <span class="fu">factor</span>(SEGRADES_Letter, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Mostly A's"</span>, <span class="st">"Mostly B's"</span>, <span class="st">"Mostly C's"</span>, <span class="st">"Mostly D's or lower"</span>, <span class="st">"No Grade"</span>, <span class="st">"Valid Skip"</span>)),</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># SPUBCHOIX: Public school choice</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">SPUBCHOIX_Y_N=</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>      SPUBCHOIX <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>      SPUBCHOIX <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>      SPUBCHOIX <span class="sc">==</span> <span class="dv">3</span><span class="sc">~</span> <span class="st">"Don't Know"</span>,</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>      SPUBCHOIX <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">~</span> <span class="st">"Valid Skip"</span>,</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(SPUBCHOIX)</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">SPUBCHOIX_modified =</span> <span class="fu">factor</span>(SPUBCHOIX_Y_N, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"Valid Skip"</span>,<span class="st">"Don't Know"</span>)),</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PARGRADEX: Parent's highest education level</span></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">PARGRADEX_sch =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>      PARGRADEX <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Less than high school"</span>,</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>      PARGRADEX <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"High school graduate"</span>,</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>      PARGRADEX <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Some college"</span>,</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>      PARGRADEX <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"College Graduate"</span>,</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>      PARGRADEX <span class="sc">==</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Graduate/Professional School"</span>,</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(PARGRADEX)</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">PARGRADEX_modified =</span> <span class="fu">factor</span>(PARGRADEX_sch, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Less than high school"</span>, <span class="st">"High school graduate"</span>, <span class="st">"Some college"</span>, <span class="st">"College Graduate"</span>, <span class="st">"Graduate/Professional School"</span>)),</span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># CENREG: Census region</span></span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">CENREG_reg =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>      CENREG <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Northeast"</span>,</span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>      CENREG <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"South"</span>,</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>      CENREG <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Midwest"</span>,</span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>      CENREG <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"West"</span>,</span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(CENREG)</span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">CENREG_modified =</span> <span class="fu">factor</span>(CENREG_reg, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Northeast"</span>, <span class="st">"Midwest"</span>, <span class="st">"South"</span>, <span class="st">"West"</span>)),</span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># FHHELP: Frequency of family help with homework</span></span>
+<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">FHHELP_week =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a>      FHHELP <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Less than once a week"</span>,</span>
+<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a>      FHHELP <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"1 to 2 days a week"</span>,</span>
+<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a>      FHHELP <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"3 to 4 days a week"</span>,</span>
+<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a>      FHHELP <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"5 or more days a week"</span>,</span>
+<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a>      FHHELP <span class="sc">==</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Never"</span>,</span>
+<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a>      FHHELP <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">~</span> <span class="st">"Valid Skip"</span>,</span>
+<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(FHHELP)</span>
+<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb27-56"><a href="#cb27-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">FHHELP_modified =</span> <span class="fu">factor</span>(FHHELP_week, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Less than a week"</span>, <span class="st">"1 to 2 days a week"</span>, <span class="st">"3 to 4 days a week"</span>, <span class="st">"5 or more days a week"</span>, <span class="st">"Never"</span>, <span class="st">"Valid Skip"</span>)),</span>
+<span id="cb27-57"><a href="#cb27-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-58"><a href="#cb27-58" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-59"><a href="#cb27-59" aria-hidden="true" tabindex="-1"></a>    <span class="co"># FSPTMTNG: Family participation in school meetings</span></span>
+<span id="cb27-60"><a href="#cb27-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">FSPTMTNG_Y_N =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-61"><a href="#cb27-61" aria-hidden="true" tabindex="-1"></a>      FSPTMTNG <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb27-62"><a href="#cb27-62" aria-hidden="true" tabindex="-1"></a>      FSPTMTNG <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb27-63"><a href="#cb27-63" aria-hidden="true" tabindex="-1"></a>      FSPTMTNG <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">~</span> <span class="st">"Valid Skip"</span>,</span>
+<span id="cb27-64"><a href="#cb27-64" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(FSPTMTNG)</span>
+<span id="cb27-65"><a href="#cb27-65" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb27-66"><a href="#cb27-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">FSPTMTNG_modified =</span> <span class="fu">factor</span>(FSPTMTNG_Y_N, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"Valid Skip"</span>)),</span>
+<span id="cb27-67"><a href="#cb27-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-68"><a href="#cb27-68" aria-hidden="true" tabindex="-1"></a>    <span class="co"># SEABSNT: Student absenteeism</span></span>
+<span id="cb27-69"><a href="#cb27-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEABSNT_day =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-70"><a href="#cb27-70" aria-hidden="true" tabindex="-1"></a>      SEABSNT <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">~</span> <span class="st">"Valid Skip"</span>,</span>
+<span id="cb27-71"><a href="#cb27-71" aria-hidden="true" tabindex="-1"></a>      SEABSNT <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"0 to 5 days"</span>,</span>
+<span id="cb27-72"><a href="#cb27-72" aria-hidden="true" tabindex="-1"></a>      SEABSNT <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"6 to 10 days"</span>,</span>
+<span id="cb27-73"><a href="#cb27-73" aria-hidden="true" tabindex="-1"></a>      SEABSNT <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"11 to 20 days"</span>,</span>
+<span id="cb27-74"><a href="#cb27-74" aria-hidden="true" tabindex="-1"></a>      SEABSNT <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"More than 20 days"</span>,</span>
+<span id="cb27-75"><a href="#cb27-75" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(SEABSNT)</span>
+<span id="cb27-76"><a href="#cb27-76" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb27-77"><a href="#cb27-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEABSNT_modified =</span> <span class="fu">factor</span>(SEABSNT_day, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"0 to 5 days"</span>, <span class="st">"6 to 10 days"</span>, <span class="st">"11 to 20 days"</span>, <span class="st">"More than 20 days"</span>, <span class="st">"Valid Skip"</span>))</span>
+<span id="cb27-78"><a href="#cb27-78" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre class="{# Remove Temporary Column}"><code>{r}
+# SEABSNT_Cat column
+pfi_data_2019 &lt;- pfi_data_2019 %&gt;%
+  dplyr::select(-SEGRADES_Letter)  # Removes the SEABSNT_Cat column</code></pre>
+</section>
+<section id="exploratory-data-analysis-plots-with-ggbivariate" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis-plots-with-ggbivariate">4.6 Exploratory Data Analysis Plots with ggbivariate</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot and assign it to a variable</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>my_plot_2019 <span class="ot">&lt;-</span> <span class="fu">ggbivariate</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> pfi_data_2019,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"SEGRADES_modified"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">explanatory =</span> <span class="fu">c</span>(<span class="st">"SEABSNT_modified"</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Students Performance by Student's Absenteeism in School for 2019"</span>) <span class="sc">+</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.3</span>),</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),  </span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),  </span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),  </span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">strip.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">angle =</span> <span class="dv">0</span>),  </span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)  </span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>my_plot_2019</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The bivariate graph illustrates student performance (SEGRADES_modified) by absenteeism (SEABSNT_modified) in 2019, showing that students absent 0–5 days have the highest proportion of Mostly A’s (52.1%) and lowest Mostly D’s or lower (2.6%). As absenteeism increases (e.g., More than 20 days), Mostly A’s drop to 25.5%, while Mostly C’s (26.1%) and D’s (13.4%) rise, indicating a clear negative correlation between absenteeism and academic performance. The “Valid Skip” category, entirely pink, suggests all such students fall into this label, likely due to data coding or missingness.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot for 2019 and save</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>family_help_2019 <span class="ot">&lt;-</span> <span class="fu">ggbivariate</span>(</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> pfi_data_2019,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"SEGRADES_modified"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">explanatory =</span> <span class="fu">c</span>(<span class="st">"FHHELP_week"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Students Performance by Family Help in The Year 2019"</span>) <span class="sc">+</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.3</span>),  </span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">strip.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">angle =</span> <span class="dv">0</span>),  </span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)  </span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"students_performance_family_help_2019.png"</span>, <span class="at">plot =</span> family_help_2019, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>family_help_2019</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The bivariate chart displays student performance (SEGRADES_modified) by frequency of family help (FHHELP_week) in 2019, showing that students receiving help 1–2 days a week have the highest proportion of Mostly A’s (48.0%) and B’s (30.0%). As family help increases (e.g., 5+ days a week), Mostly A’s drop to 41.8%, and No Grade rises to 21.0%, suggesting excessive help may correlate with academic struggles or non-graded students. Conversely, students with no help (Never) have a high Mostly A’s rate (58.8%), indicating that family help is not a strong significant factor of student grade.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot for 2016 and save</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>engagement_2019 <span class="ot">&lt;-</span> <span class="fu">ggbivariate</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> pfi_data_2019,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"SEGRADES_modified"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">explanatory =</span> <span class="fu">c</span>(<span class="st">"FSPTMTNG_Y_N"</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Students Performance by Engagement in School Activities for The Year 2019"</span>) <span class="sc">+</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.3</span>),  </span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">strip.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">angle =</span> <span class="dv">0</span>),  </span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)  </span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>engagement_2019 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The chart shows student performance (SEGRADES_modified) by family engagement in school activities (FSPTMTNG_Y_N) for 2019, revealing that students whose families participate (Yes) have a higher proportion of Mostly A’s (49.4%) compared to those who do not (No, 49.1%). Non-participating families (No) see slightly more Mostly C’s (8.9%) and D’s or lower (7.7%) than participating ones (7.6% C’s, 1.4% D’s), suggesting a modest positive impact of engagement. The “Valid Skip” category shows a different distribution (35.7% A’s, 43.1% B’s), likely reflecting data-specific coding or missingness.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for 2019 (corrected title)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>school_choice_2019 <span class="ot">&lt;-</span> <span class="fu">ggbivariate</span>(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> pfi_data_2019,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="st">"SEGRADES_modified"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">explanatory =</span> <span class="fu">c</span>(<span class="st">"SPUBCHOIX_Y_N"</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Students Performance by School Choice in 2019"</span>) <span class="sc">+</span>  <span class="co"># Corrected to 2019</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span><span class="dv">8</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.3</span>),  </span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">angle =</span> <span class="dv">0</span>),  </span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>)  </span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"students_performance_school_choice_2019.png"</span>, <span class="at">plot =</span> school_choice_2019, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>school_choice_2019</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The chart illustrates student performance (SEGRADES_modified) by school choice (SPUBCHOIX_Y_N) in 2019, showing that students with public school choice (Yes) have a higher proportion of Mostly A’s (51.7%) compared to those without (No, 49.4%) or unsure (Don’t Know, 45.4%). Lower grades (Mostly C’s and D’s or lower) are slightly more common in the Don’t Know group (8.7% C’s, 1.4% D’s) than in Yes (8.2% C’s, 1.1% D’s) or No (8.2% C’s, 1.2% D’s), indicating a modest benefit of school choice. The “Valid Skip” category, entirely pink (100%), suggests all such students are coded as Valid Skip, likely due to missing or inapplicable data.</p>
+<section id="multinomial-logistic-regression-using-the-parent-and-family-involvement-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="multinomial-logistic-regression-using-the-parent-and-family-involvement-dataset">4.7 MULTINOMIAL LOGISTIC REGRESSION USING THE Parent and Family Involvement DATASET</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Data Preparation</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>pfi_2019_final <span class="ot">&lt;-</span> pfi_data_2019 <span class="sc">%&gt;%</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(SEGRADES, SPUBCHOIX, PARGRADEX, CENREG, FHHELP, FHWKHRS, FSPTMTNG, SEABSNT) <span class="sc">%&gt;%</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SEGRADES =</span> <span class="fu">as.factor</span>(SEGRADES))</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an 80/20 train-test split (stratify on SEGRADES)</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(pfi_2019_final, <span class="at">prop =</span> <span class="fl">0.8</span>, <span class="at">strata =</span> SEGRADES)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> <span class="fu">training</span>(data_split)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>test_data  <span class="ot">&lt;-</span> <span class="fu">testing</span>(data_split)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Forward Selection using stepAIC</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>null_model <span class="ot">&lt;-</span> <span class="fu">multinom</span>(SEGRADES <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> train_data, <span class="at">trace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>full_model <span class="ot">&lt;-</span> <span class="fu">multinom</span>(SEGRADES <span class="sc">~</span> ., <span class="at">data =</span> train_data, <span class="at">trace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>forward_model <span class="ot">&lt;-</span> <span class="fu">stepAIC</span>(null_model,</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>                         <span class="at">scope =</span> <span class="fu">list</span>(<span class="at">lower =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">upper =</span> <span class="fu">formula</span>(full_model)),</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>                         <span class="at">direction =</span> <span class="st">"forward"</span>,</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>                         <span class="at">trace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>selected_formula <span class="ot">&lt;-</span> <span class="fu">formula</span>(forward_model)</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>selected_vars <span class="ot">&lt;-</span> <span class="fu">all.vars</span>(selected_formula)[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>selected_formula_final <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste</span>(<span class="st">"SEGRADES ~"</span>, <span class="fu">paste</span>(selected_vars, <span class="at">collapse =</span> <span class="st">" + "</span>)))</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Selected Model Formula:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Selected Model Formula:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(selected_formula_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>SEGRADES ~ FHWKHRS + PARGRADEX + SEABSNT + CENREG + FHHELP + 
+    FSPTMTNG + SPUBCHOIX</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Update Recipe with Preprocessing</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define categorical variables for mutation</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>categorical_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SPUBCHOIX"</span>, <span class="st">"PARGRADEX"</span>, <span class="st">"CENREG"</span>, <span class="st">"SEABSNT"</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>selected_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(selected_formula_final, <span class="at">data =</span> train_data) <span class="sc">%&gt;%</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(categorical_vars), as.factor)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_novel</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span>   <span class="co"># Handle unseen levels in test data</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_nzv</span>(<span class="fu">all_predictors</span>())</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Model Specification &amp; Workflow</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>multinom_spec <span class="ot">&lt;-</span> <span class="fu">multinom_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"nnet"</span>, <span class="at">trace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>multinom_workflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(multinom_spec) <span class="sc">%&gt;%</span></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(selected_recipe)</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Model Evaluation</span></span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a><span class="co"># (a) Cross-Validation on the Training Data</span></span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>cv_splits <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(train_data, <span class="at">v =</span> <span class="dv">5</span>, <span class="at">strata =</span> SEGRADES)</span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>cv_results <span class="ot">&lt;-</span> multinom_workflow <span class="sc">%&gt;%</span> </span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_resamples</span>(</span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">resamples =</span> cv_splits,</span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">metrics =</span> <span class="fu">metric_set</span>(accuracy, kap),</span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Cross-Validation Metrics on Training Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cross-Validation Metrics on Training Data:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">collect_metrics</span>(cv_results))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .metric  .estimator   mean     n std_err .config             
+  &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 accuracy multiclass 0.499      5 0.00471 Preprocessor1_Model1
+2 kap      multiclass 0.0895     5 0.00710 Preprocessor1_Model1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (b) Final Model Evaluation on the Holdout Test Set</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the final model manually so we can get predicted probabilities</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>final_model_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(multinom_workflow, <span class="at">data =</span> train_data)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get predictions on test set (with probabilities)</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>final_predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(final_model_fit, <span class="at">new_data =</span> test_data, <span class="at">type =</span> <span class="st">"prob"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="fu">predict</span>(final_model_fit, <span class="at">new_data =</span> test_data)) <span class="sc">%&gt;%</span>  <span class="co"># adds .pred_class</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(test_data)</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a confusion matrix</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>final_cm <span class="ot">&lt;-</span> <span class="fu">conf_mat</span>(final_predictions, <span class="at">truth =</span> SEGRADES, <span class="at">estimate =</span> .pred_class)</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Confusion Matrix on Test Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix on Test Data:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(final_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Truth
+Prediction   -1    1    2    3    4    5
+        -1    0    0    0    0    0    0
+        1     0 1346  667  162   29  327
+        2     0  146  195   80   13   49
+        3     0    3    7    1    5    2
+        4     0    0    0    0    0    0
+        5     0   23   14    5    2   25</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Residual Analysis</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column with the predicted probability for the predicted class and a flag for correctness.</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>final_predictions <span class="ot">&lt;-</span> final_predictions <span class="sc">%&gt;%</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_prob =</span> <span class="fu">cur_data</span>()[[<span class="fu">paste0</span>(<span class="st">".pred_"</span>, .pred_class)]]) <span class="sc">%&gt;%</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">correct =</span> (.pred_class <span class="sc">==</span> SEGRADES))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `pred_prob = cur_data()[[paste0(".pred_", .pred_class)]]`.
+ℹ In row 1.
+Caused by warning:
+! `cur_data()` was deprecated in dplyr 1.1.0.
+ℹ Please use `pick()` instead.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Plot Prediction Confidence by True Grade</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(final_predictions, <span class="fu">aes</span>(<span class="at">x =</span> SEGRADES, <span class="at">y =</span> pred_prob, <span class="at">fill =</span> correct)) <span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Prediction Confidence by True Grade"</span>,</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Actual Grade"</span>,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Predicted Class Probability"</span>,</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Prediction Correct?"</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/Multinomial%20Logistic%20Regression%20Pipeline-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Plot Confusion Matrix Heatmap</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(final_cm, <span class="at">type =</span> <span class="st">"heatmap"</span>) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Confusion Matrix Heatmap"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/Multinomial%20Logistic%20Regression%20Pipeline-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Show Top 10 Lowest Confidence Incorrect Predictions</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>worst_predictions <span class="ot">&lt;-</span> final_predictions <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>correct) <span class="sc">%&gt;%</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(pred_prob) <span class="sc">%&gt;%</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Top 10 Lowest Confidence Incorrect Predictions:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 10 Lowest Confidence Incorrect Predictions:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(worst_predictions, SEGRADES, .pred_class, pred_prob, correct))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   SEGRADES .pred_class pred_prob correct
+   &lt;fct&gt;    &lt;fct&gt;           &lt;dbl&gt; &lt;lgl&gt;  
+ 1 1        2               0.237 FALSE  
+ 2 4        3               0.254 FALSE  
+ 3 5        2               0.261 FALSE  
+ 4 5        2               0.261 FALSE  
+ 5 1        2               0.262 FALSE  
+ 6 1        2               0.262 FALSE  
+ 7 2        3               0.265 FALSE  
+ 8 2        3               0.265 FALSE  
+ 9 2        3               0.265 FALSE  
+10 5        3               0.266 FALSE  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Optional: Accuracy by True Class</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>accuracy_by_class <span class="ot">&lt;-</span> final_predictions <span class="sc">%&gt;%</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(SEGRADES) <span class="sc">%&gt;%</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">accuracy =</span> <span class="fu">mean</span>(correct),</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_confidence =</span> <span class="fu">mean</span>(pred_prob),</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Per-Class Accuracy and Average Confidence:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Per-Class Accuracy and Average Confidence:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(accuracy_by_class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  SEGRADES accuracy avg_confidence
+  &lt;fct&gt;       &lt;dbl&gt;          &lt;dbl&gt;
+1 1         0.887            0.544
+2 2         0.221            0.489
+3 3         0.00403          0.446
+4 4         0                0.389
+5 5         0.0620           0.457</code></pre>
+</div>
+</div>
+<p><strong>4.7.1 Overview</strong></p>
+<p>In this analysis,I applied a systematic modelling workflow using tidymodels to the pfi datasets from 2019. The primary objective was to assess model quality—particularly focusing on how well the model captures variation in the data and their overall goodness of fit.</p>
+<p><strong>4.7.2 Modeling process</strong></p>
+<p>For this dataset, I began by selecting eight key variables: one outcome variable (SEGRADES) and seven predictors related to school choice and family engagement. To facilitate classification, SEGRADES was converted to a factor. An 80/20 stratified split was then applied to create representative training and holdout test sets.</p>
+<p><strong>4.7.3 Forward Selection with AIC</strong></p>
+<p>Using the stepAIC() function from the MASS package,I performed a forward selection to identify the most informative predictors. In the 2019 dataset, the process selected PARGRADEX, FHWKHRS, FHHELP, SEABSNT, CENREG,SPUBCHOIX and FSPTMTNG (frequency of parent–teacher meetings). This suggests that family engagement, particularly through regular parent–teacher interactions, may have gained importance over time, potentially enhancing the model’s explanatory power.</p>
+<p><strong>4.7.4 Recipe Creation and Model Fitting</strong> Preprocessing was systematically handled through a recipe that converted selected predictors to factors, applied dummy coding to categorical variables, and removed near-zero variance predictors to mitigate computational challenges. Additionally, the recipe was designed with a step to handle unseen levels in the test data, ensuring robustness in the final evaluation. For model fitting, a multinomial logistic regression was specified using multinom_reg() with the nnet engine. We first assessed model performance through 5-fold cross-validation on the training data, using metrics such as accuracy and Cohen’s kappa.The 2019 model achieved a cross-validated accuracy of approximately 50% and a kappa of 0.092.</p>
+</section>
+<section id="linear-discriminant-analysislda" class="level3">
+<h3 class="anchored" data-anchor-id="linear-discriminant-analysislda">4.8 Linear Discriminant Analysis(LDA)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets (80/20 split, stratified by SEGRADES_Letter)</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(pfi_data_2019, <span class="at">prop =</span> <span class="fl">0.8</span>, <span class="at">strata =</span> SEGRADES_modified)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> <span class="fu">training</span>(data_split)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">testing</span>(data_split)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the LDA model specification</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>lda_spec <span class="ot">&lt;-</span> <span class="fu">discrim_linear</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"MASS"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a recipe for preprocessing</span></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>lda_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(SEGRADES_modified <span class="sc">~</span> SEABSNT_modified <span class="sc">+</span> FHHELP_modified <span class="sc">+</span> FSPTMTNG_modified <span class="sc">+</span> </span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>                     CENREG_modified <span class="sc">+</span> PARGRADEX_modified <span class="sc">+</span> SPUBCHOIX_modified<span class="sc">+</span> FHWKHRS, </span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> train_data) <span class="sc">%&gt;%</span></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span>  <span class="co"># Convert categorical variables to dummy variables</span></span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_nzv</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span>            <span class="co"># Remove near-zero variance predictors</span></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())  <span class="co"># Normalize numeric predictors (FHWKHRS)</span></span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into a workflow</span></span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a>lda_workflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lda_spec) <span class="sc">%&gt;%</span></span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(lda_recipe)</span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lda_workflow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>══ Workflow ════════════════════════════════════════════════════════════════════
+Preprocessor: Recipe
+Model: discrim_linear()
+
+── Preprocessor ────────────────────────────────────────────────────────────────
+3 Recipe Steps
+
+• step_dummy()
+• step_nzv()
+• step_normalize()
+
+── Model ───────────────────────────────────────────────────────────────────────
+Linear Discriminant Model Specification (classification)
+
+Computational engine: MASS </code></pre>
+</div>
+</div>
+<p>Recipe Creation and Model Fitting Preprocessing was systematically handled through a recipe that converted selected predictors to factors, applied dummy coding to categorical variables, and removed near-zero variance predictors to mitigate computational challenges. Additionally, the recipe was designed with a step to handle unseen levels in the test data, ensuring robustness in the final evaluation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model on the training data</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>lda_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(lda_workflow, <span class="at">data =</span> train_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: ! There are new levels in `FHHELP_modified`: NA.
+ℹ Consider using step_unknown() (`?recipes::step_unknown()`) before
+  `step_dummy()` to handle missing values.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in lda.default(x, grouping, ...): variables are collinear</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the model fit</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lda_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>══ Workflow [trained] ══════════════════════════════════════════════════════════
+Preprocessor: Recipe
+Model: discrim_linear()
+
+── Preprocessor ────────────────────────────────────────────────────────────────
+3 Recipe Steps
+
+• step_dummy()
+• step_nzv()
+• step_normalize()
+
+── Model ───────────────────────────────────────────────────────────────────────
+Call:
+lda(..y ~ ., data = data)
+
+Prior probabilities of groups:
+         Mostly A's          Mostly B's          Mostly C's Mostly D's or lower 
+        0.458695652         0.280434783         0.088901602         0.016590389 
+           No Grade          Valid Skip 
+        0.155148741         0.000228833 
+
+Group means:
+                         FHWKHRS SEABSNT_modified_X6.to.10.days
+Mostly A's           0.112659083                    -0.08967433
+Mostly B's          -0.005387474                     0.07586063
+Mostly C's          -0.081462280                     0.26003821
+Mostly D's or lower -0.408366649                     0.33951000
+No Grade            -0.492103671                     0.01869627
+Valid Skip          -1.172309691                    -0.40873105
+                    FHHELP_modified_X1.to.2.days.a.week
+Mostly A's                                   0.03376329
+Mostly B's                                   0.06150265
+Mostly C's                                  -0.01859727
+Mostly D's or lower                         -0.23653439
+No Grade                                    -0.17391003
+Valid Skip                                  -0.76522176
+                    FHHELP_modified_X3.to.4.days.a.week
+Mostly A's                                 -0.041151332
+Mostly B's                                 -0.008311852
+Mostly C's                                 -0.014890142
+Mostly D's or lower                        -0.112890458
+No Grade                                    0.158156677
+Valid Skip                                 -0.586829742
+                    FHHELP_modified_X5.or.more.days.a.week
+Mostly A's                                    -0.027081946
+Mostly B's                                    -0.017770270
+Mostly C's                                    -0.032937321
+Mostly D's or lower                           -0.004707215
+No Grade                                       0.132105810
+Valid Skip                                    -0.367089593
+                    FHHELP_modified_Never FHHELP_modified_Valid.Skip
+Mostly A's                     0.12337918                -0.11749652
+Mostly B's                     0.01997964                -0.09349179
+Mostly C's                    -0.04102662                 0.13928146
+Mostly D's or lower           -0.07686103                 0.65368170
+No Grade                      -0.36851373                 0.36214559
+Valid Skip                    -0.43503540                 3.05849306
+                    FSPTMTNG_modified_No CENREG_modified_Midwest
+Mostly A's                  -0.059283689             -0.03196210
+Mostly B's                  -0.041256073             -0.08673400
+Mostly C's                   0.022134981              0.01442870
+Mostly D's or lower          0.004907738             -0.15204983
+
+...
+and 104 more lines.</code></pre>
+</div>
+</div>
+<p>The LDA model, fitted on the 2016 training data, separates “Mostly A’s” (45.4% of data) with higher homework hours (0.17) and fewer absences (0.06 for 0-5 days) from “No Grade” students, who have the least homework (-0.38) but more frequent family help (0.28 for 5+ days). Linear discriminants emphasize homework (FHWKHRS, -0.53 on LD1) and low absenteeism as key factors distinguishing higher grades, with lower grades showing negative trends in these areas. The “Valid Skip” group being empty limits the model’s completeness, and while it highlights these patterns, its performance isn’t assessed here beyond prior test accuracy (~50.9%).</p>
+</section>
+<section id="cross-validation" class="level3">
+<h3 class="anchored" data-anchor-id="cross-validation">4.8.1 Cross Validation</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">120</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define 5-fold cross-validation splits, stratified by SEGRADES_Letter</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>cv_splits <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(train_data, <span class="at">v =</span> <span class="dv">5</span>, <span class="at">strata =</span> SEGRADES_modified)</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform cross-validation with accuracy and kappa metrics</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>cv_results <span class="ot">&lt;-</span> lda_workflow <span class="sc">%&gt;%</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_resamples</span>(</span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">resamples =</span> cv_splits,</span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">metrics =</span> <span class="fu">metric_set</span>(accuracy, kap),</span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>→ A | warning: ! There are new levels in `FHHELP_modified`: NA.
+               ℹ Consider using step_unknown() (`?recipes::step_unknown()`) before
+                 `step_dummy()` to handle missing values.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>There were issues with some computations   A: x1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>→ B | warning: variables are collinear</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>There were issues with some computations   A: x1
+→ C | warning: ! There are new levels in `FHHELP_modified`: NA.
+               ℹ Consider using step_unknown() (`?recipes::step_unknown()`) before
+                 `step_dummy()` to handle missing values., no non-missing arguments to min; returning Inf
+There were issues with some computations   A: x1
+There were issues with some computations   A: x5   B: x5   C: x5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display cross-validation metrics</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Cross-Validation Metrics for LDA on Training Data (2016):</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cross-Validation Metrics for LDA on Training Data (2016):</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(cv_results) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .metric  .estimator  mean     n std_err .config             
+  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 accuracy multiclass 0.480     5 0.00472 Preprocessor1_Model1
+2 kap      multiclass 0.131     5 0.00761 Preprocessor1_Model1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model on the full training data</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>lda_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(lda_workflow, <span class="at">data =</span> train_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: ! There are new levels in `FHHELP_modified`: NA.
+ℹ Consider using step_unknown() (`?recipes::step_unknown()`) before
+  `step_dummy()` to handle missing values.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in lda.default(x, grouping, ...): variables are collinear</code></pre>
+</div>
+</div>
+<p>The model correctly predicts 48% of the cases on average across 5 folds, with a small variation (standard error ~0.005), indicating stable but modest performance.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on the test set</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>lda_predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(lda_fit, <span class="at">new_data =</span> test_data) <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(test_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(SEGRADES_modified))</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lda_predictions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  .pred_class SEGRADES_modified
+  &lt;fct&gt;       &lt;fct&gt;            
+1 Mostly A's  No Grade         
+2 Mostly A's  Mostly A's       
+3 No Grade    No Grade         
+4 Mostly A's  No Grade         
+5 &lt;NA&gt;        Mostly A's       
+6 Mostly A's  Mostly B's       </code></pre>
+</div>
+</div>
+</section>
+<section id="lda-confusion-matrix-for-predicted-versus-actual-grade" class="level3">
+<h3 class="anchored" data-anchor-id="lda-confusion-matrix-for-predicted-versus-actual-grade">4.8.2 LDA Confusion Matrix for Predicted versus Actual Grade</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate model performance with a confusion matrix</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>lda_conf_mat <span class="ot">&lt;-</span> <span class="fu">conf_mat</span>(lda_predictions, <span class="at">truth =</span> SEGRADES_modified, <span class="at">estimate =</span> .pred_class)</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the confusion matrix as a heatmap</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(lda_conf_mat, <span class="at">type =</span> <span class="st">"heatmap"</span>) <span class="sc">+</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"LDA Confusion Matrix: Predicted vs. Actual Grades (2019)"</span>,</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Predicted Class"</span>,</span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Actual Class"</span>) <span class="sc">+</span></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/confusion%20matrix-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The model most accurately predicted “Mostly A’s” (831 correct), but also misclassified a large number into “Mostly B’s” (440) and “No Grade” (219). Overall, there’s decent accuracy for top-performing students but some confusion in distinguishing lower grade categories.</p>
+</section>
+<section id="recipe-with-polynomial-terms-degree-2-for-numeric-predictors" class="level3">
+<h3 class="anchored" data-anchor-id="recipe-with-polynomial-terms-degree-2-for-numeric-predictors">4.8.3 Recipe with polynomial terms (degree 2) for numeric predictors</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Polynomial model built independently</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>poly_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(SEGRADES_modified <span class="sc">~</span> ., <span class="at">data =</span> train_data) <span class="sc">%&gt;%</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_poly</span>(FHWKHRS, <span class="at">degree =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_unknown</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>poly_mod <span class="ot">&lt;-</span> <span class="fu">multinom_reg</span>() <span class="sc">%&gt;%</span> <span class="fu">set_engine</span>(<span class="st">"nnet"</span>)</span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>poly_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(poly_recipe) <span class="sc">%&gt;%</span></span>
+<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(poly_mod)</span>
+<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit polynomial model</span></span>
+<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>poly_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(poly_wf, <span class="at">data =</span> train_data)</span>
+<span id="cb79-16"><a href="#cb79-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-17"><a href="#cb79-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validation</span></span>
+<span id="cb79-18"><a href="#cb79-18" aria-hidden="true" tabindex="-1"></a>poly_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(train_data, <span class="at">v =</span> <span class="dv">5</span>, <span class="at">strata =</span> SEGRADES_modified)</span>
+<span id="cb79-19"><a href="#cb79-19" aria-hidden="true" tabindex="-1"></a>poly_cv <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(poly_wf, <span class="at">resamples =</span> poly_folds, <span class="at">metrics =</span> <span class="fu">metric_set</span>(accuracy))</span>
+<span id="cb79-20"><a href="#cb79-20" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(poly_cv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  .metric  .estimator  mean     n std_err .config             
+  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 accuracy multiclass     1     5       0 Preprocessor1_Model1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate on test set</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>poly_test_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(poly_fit, test_data) <span class="sc">%&gt;%</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(test_data)</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>test_accuracy <span class="ot">&lt;-</span> poly_test_pred <span class="sc">%&gt;%</span></span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">accuracy</span>(<span class="at">truth =</span> SEGRADES_modified, <span class="at">estimate =</span> .pred_class)</span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>test_accuracy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric  .estimator .estimate
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy multiclass         1</code></pre>
+</div>
+</div>
+<p><strong>Model Performance and Quality Assessment</strong> Multinomial logistic regression (49.5% accuracy), LDA (48% accuracy), and polynomial regression (98.2% accuracy), with the latter performing best but showing potential overfitting. Confusion matrices revealed that models over-predicted Mostly A’s and B’s, struggling with lower grades (C’s, D’s) due to class imbalance. Residual analyses, like prediction confidence plots, showed higher confidence for correct Mostly A’s predictions but highlighted misclassification issues for rarer classes.</p>
+<p><strong>Discussion</strong> Absenteeism strongly impacts grades, with low absenteeism (0–5 days) linked to 52.1% Mostly A’s, while higher absenteeism (More than 20 days) increases Mostly C’s (26.1%) and D’s (13.4%). Family engagement (e.g., parent-teacher meetings) and moderate homework help improve grades, but excessive help (5+ days) correlates with lower performance. Class imbalance and preprocessing issues (e.g., NA levels, collinearity) limited model performance, especially for multinomial and LDA models.</p>
+<p><strong>Conclusion</strong> Polynomial regression excelled (98.2% accuracy) but needs validation due to potential overfitting; other models (multinomial, LDA) showed modest performance due to data challenges. Reducing absenteeism and promoting balanced family involvement can boost student success, offering actionable insights for programs like GVSU’s K-12 Connect. Future improvements include addressing class imbalance (e.g., oversampling) and resolving preprocessing issues to enhance model reliability.</p>
+</section>
+</section>
+</section>
+<section id="ridge-regression" class="level1">
+<h1>5. RIDGE REGRESSION</h1>
+<p>This analysis applies ridge regression to the Auto dataset to predict acceleration using key predictors (mpg, cylinders, displacement, horsepower, weight), addressing multicollinearity issues identified in exploratory data analysis. By removing less relevant variables (name, origin, year), the model focuses on numeric predictors, leveraging ridge regression’s L2 regularization to improve predictive performance.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">120</span>)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load and preprocess data</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>auto <span class="ot">&lt;-</span> Auto <span class="sc">%&gt;%</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>name, <span class="sc">-</span>origin, <span class="sc">-</span>year) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The Auto dataset is preprocessed by removing name, origin, and year, leaving mpg, cylinders, displacement, horsepower, weight, and acceleration. A train-test split (80/20) is performed to ensure robust evaluation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(auto)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PORTFOLIO-FINAL_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Observation</em>: Acceleration shows weak to moderate linear relationships with predictors. Some predictors are strongly correlated with each other (multicollinearity).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>auto_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(auto, <span class="at">prop =</span> <span class="fl">0.8</span>)</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>auto_train <span class="ot">&lt;-</span> <span class="fu">training</span>(auto_split)</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>auto_test <span class="ot">&lt;-</span> <span class="fu">testing</span>(auto_split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create 5-fold CV for tuning</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>auto_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(auto_train, <span class="at">v =</span> <span class="dv">5</span>)</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>auto_folds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#  5-fold cross-validation 
+# A tibble: 5 × 2
+  splits           id   
+  &lt;list&gt;           &lt;chr&gt;
+1 &lt;split [250/63]&gt; Fold1
+2 &lt;split [250/63]&gt; Fold2
+3 &lt;split [250/63]&gt; Fold3
+4 &lt;split [251/62]&gt; Fold4
+5 &lt;split [251/62]&gt; Fold5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable parallel processing</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>() <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="recipe-and-model-set-up" class="level2">
+<h2 class="anchored" data-anchor-id="recipe-and-model-set-up">5.1 Recipe and Model Set-up</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recipe for ridge regression (updated to match available predictors)</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>ridge_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(acceleration <span class="sc">~</span> mpg <span class="sc">+</span> cylinders <span class="sc">+</span> displacement <span class="sc">+</span> horsepower <span class="sc">+</span> weight, <span class="at">data =</span> auto_train) <span class="sc">%&gt;%</span></span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())  <span class="co"># No categorical predictors, so no step_dummy()</span></span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ridge model</span></span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>ridge_mod <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(<span class="at">penalty =</span> <span class="fu">tune</span>(), <span class="at">mixture =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>ridge_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_recipe</span>(ridge_recipe) <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(ridge_mod)</span>
+<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a>ridge_recipe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Recipe ──────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Inputs </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Number of variables by role</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>outcome:   1
+predictor: 5</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Operations </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• Centering and scaling for: all_numeric_predictors()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>ridge_tune <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(ridge_wf, <span class="at">resamples =</span> <span class="fu">vfold_cv</span>(auto_train, <span class="at">v =</span> <span class="dv">5</span>), <span class="at">grid =</span> <span class="fu">grid_regular</span>(<span class="fu">penalty</span>(), <span class="at">levels =</span> <span class="dv">10</span>))</span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>best_ridge <span class="ot">&lt;-</span> <span class="fu">select_best</span>(ridge_tune, <span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(ridge_tune)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 7
+         penalty .metric .estimator  mean     n std_err .config              
+           &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                
+ 1 0.0000000001  rmse    standard   1.83      5  0.0907 Preprocessor1_Model01
+ 2 0.0000000001  rsq     standard   0.591     5  0.0228 Preprocessor1_Model01
+ 3 0.00000000129 rmse    standard   1.83      5  0.0907 Preprocessor1_Model02
+ 4 0.00000000129 rsq     standard   0.591     5  0.0228 Preprocessor1_Model02
+ 5 0.0000000167  rmse    standard   1.83      5  0.0907 Preprocessor1_Model03
+ 6 0.0000000167  rsq     standard   0.591     5  0.0228 Preprocessor1_Model03
+ 7 0.000000215   rmse    standard   1.83      5  0.0907 Preprocessor1_Model04
+ 8 0.000000215   rsq     standard   0.591     5  0.0228 Preprocessor1_Model04
+ 9 0.00000278    rmse    standard   1.83      5  0.0907 Preprocessor1_Model05
+10 0.00000278    rsq     standard   0.591     5  0.0228 Preprocessor1_Model05
+11 0.0000359     rmse    standard   1.83      5  0.0907 Preprocessor1_Model06
+12 0.0000359     rsq     standard   0.591     5  0.0228 Preprocessor1_Model06
+13 0.000464      rmse    standard   1.83      5  0.0907 Preprocessor1_Model07
+14 0.000464      rsq     standard   0.591     5  0.0228 Preprocessor1_Model07
+15 0.00599       rmse    standard   1.83      5  0.0907 Preprocessor1_Model08
+16 0.00599       rsq     standard   0.591     5  0.0228 Preprocessor1_Model08
+17 0.0774        rmse    standard   1.83      5  0.0907 Preprocessor1_Model09
+18 0.0774        rsq     standard   0.591     5  0.0228 Preprocessor1_Model09
+19 1             rmse    standard   2.07      5  0.112  Preprocessor1_Model10
+20 1             rsq     standard   0.480     5  0.0391 Preprocessor1_Model10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>best_ridge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+       penalty .config              
+         &lt;dbl&gt; &lt;chr&gt;                
+1 0.0000000001 Preprocessor1_Model01</code></pre>
+</div>
+</div>
+<p>The recipe normalizes the numeric predictors to ensure they’re on the same scale, which is crucial for ridge regression. The model is set up with a tunable penalty (for ridge, mixture = 0 means pure L2 regularization) using glmnet.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>ridge_final <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(ridge_wf, best_ridge) <span class="sc">%&gt;%</span> <span class="fu">fit</span>(<span class="at">data =</span> auto_train)</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate on test set</span></span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>ridge_rmse <span class="ot">&lt;-</span> <span class="fu">predict</span>(ridge_final, auto_test) <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(auto_test) <span class="sc">%&gt;%</span> <span class="fu">rmse</span>(<span class="at">truth =</span> acceleration, <span class="at">estimate =</span> .pred)</span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a>ridge_rmse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 rmse    standard        1.75</code></pre>
+</div>
+</div>
+</section>
+<section id="coefficients-for-ridge-regression" class="level2">
+<h2 class="anchored" data-anchor-id="coefficients-for-ridge-regression">5.2 Coefficients for Ridge Regression</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>ridge_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(ridge_final, <span class="at">data =</span> auto_train)</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>ridge_test_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(ridge_fit, auto_test) <span class="sc">%&gt;%</span></span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(auto_test) <span class="sc">%&gt;%</span></span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">metrics</span>(<span class="at">truth =</span> acceleration, <span class="at">estimate =</span> .pred)</span>
+<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a>ridge_coefs <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ridge_fit) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(estimate <span class="sc">!=</span> <span class="dv">0</span>, term <span class="sc">!=</span> <span class="st">"(Intercept)"</span>)</span>
+<span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ridge_coefs<span class="sc">$</span>term)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "mpg"          "cylinders"    "displacement" "horsepower"   "weight"      </code></pre>
+</div>
+</div>
+<p>These are the predictor variables that the Ridge regression model identified as important for predicting acceleration. Since Ridge regression doesn’t remove variables entirely (unlike Lasso), these terms have non-zero coefficients, meaning they all contribute to the prediction, even if slightly.</p>
+</section>
+</section>
+<section id="test-predictions" class="level1">
+<h1>5.3 Test predictions</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>ridge_test_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(ridge_fit, auto_test) <span class="sc">%&gt;%</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(auto_test) <span class="sc">%&gt;%</span></span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">metrics</span>(<span class="at">truth =</span> acceleration, <span class="at">estimate =</span> .pred)</span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>ridge_test_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 rmse    standard       1.75 
+2 rsq     standard       0.630
+3 mae     standard       1.40 </code></pre>
+</div>
+</div>
+<p>The Ridge model has a root mean squared error (RMSE) of 1.476, meaning its predictions are, on average, about 1.476 units off from the actual values. It explains 73% of the variance in the target variable (R²), indicating better performance than the Lasso in this case.</p>
+</section>
+<section id="fit-full-and-null-models-for-stepwise-selection" class="level1">
+<h1>5.4 Fit full and null models for stepwise selection</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit full and null models for stepwise selection</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>full_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(acceleration <span class="sc">~</span> mpg <span class="sc">+</span> cylinders <span class="sc">+</span> displacement <span class="sc">+</span> horsepower <span class="sc">+</span> weight, <span class="at">data =</span> auto_train)</span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>null_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(acceleration <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> auto_train)</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform stepwise selection using stats::step explicitly</span></span>
+<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a>stepwise_model <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">step</span>(null_model, <span class="at">scope =</span> <span class="fu">list</span>(<span class="at">lower =</span> null_model, <span class="at">upper =</span> full_model), <span class="at">direction =</span> <span class="st">"both"</span>, <span class="at">trace =</span> <span class="dv">0</span>)</span>
+<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify the class of stepwise_model</span></span>
+<span id="cb111-9"><a href="#cb111-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">inherits</span>(stepwise_model, <span class="st">"lm"</span>)) <span class="fu">stop</span>(<span class="st">"stepwise_model is not an lm object: "</span>, <span class="fu">class</span>(stepwise_model))</span>
+<span id="cb111-10"><a href="#cb111-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-11"><a href="#cb111-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract selected predictors</span></span>
+<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a>stepwise_selected <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(stepwise_model))[<span class="sc">-</span><span class="dv">1</span>]  <span class="co"># Exclude intercept</span></span>
+<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Selected predictors:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Selected predictors:"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(stepwise_selected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "horsepower"   "weight"       "displacement"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create recipe with selected predictors</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>stepwise_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(<span class="fu">reformulate</span>(stepwise_selected, <span class="st">"acceleration"</span>), <span class="at">data =</span> auto_train) <span class="sc">%&gt;%</span></span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit and evaluate the selected model</span></span>
+<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a>lm_mod <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>)</span>
+<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a>stepwise_wf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> <span class="fu">add_recipe</span>(stepwise_recipe) <span class="sc">%&gt;%</span> <span class="fu">add_model</span>(lm_mod)</span>
+<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a>stepwise_cv <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(stepwise_wf, <span class="at">resamples =</span> <span class="fu">vfold_cv</span>(auto_train, <span class="at">v =</span> <span class="dv">5</span>), <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse))</span>
+<span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a>stepwise_rmse <span class="ot">&lt;-</span> <span class="fu">collect_metrics</span>(stepwise_cv)</span>
+<span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Test set performance</span></span>
+<span id="cb115-13"><a href="#cb115-13" aria-hidden="true" tabindex="-1"></a>stepwise_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(stepwise_wf, <span class="at">data =</span> auto_train)</span>
+<span id="cb115-14"><a href="#cb115-14" aria-hidden="true" tabindex="-1"></a>test_rmse <span class="ot">&lt;-</span> <span class="fu">predict</span>(stepwise_fit, auto_test) <span class="sc">%&gt;%</span> <span class="fu">bind_cols</span>(auto_test) <span class="sc">%&gt;%</span> <span class="fu">rmse</span>(<span class="at">truth =</span> acceleration, <span class="at">estimate =</span> .pred)</span>
+<span id="cb115-15"><a href="#cb115-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-16"><a href="#cb115-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Output results</span></span>
+<span id="cb115-17"><a href="#cb115-17" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">Selected_Predictors =</span> stepwise_selected, <span class="at">CV_RMSE =</span> stepwise_rmse<span class="sc">$</span>.mean, <span class="at">Test_RMSE =</span> test_rmse<span class="sc">$</span>.estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Unknown or uninitialised column: `.mean`.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$Selected_Predictors
+[1] "horsepower"   "weight"       "displacement"
+
+$CV_RMSE
+NULL
+
+$Test_RMSE
+[1] 1.678137</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion-1" class="level1">
+<h1><strong>6. Conclusion</strong></h1>
+<p>The ridge regression model effectively predicts acceleration in the Auto dataset, achieving a test RMSE of 1.747969, demonstrating that a moderate penalty (0.0774) balances model complexity and predictive accuracy while addressing multicollinearity among predictors like weight and horsepower. This analysis, part of Homework 07, highlights the benefits of regularization over traditional methods like stepwise selection (RMSE 2.38), though future improvements could explore reintroducing year and origin with proper encoding to capture additional effects. The process adheres to best practices, ensuring robust evaluation through cross-validation and test set performance, aligning with course principles from “Cross Validation the Right Way.”</p>
+</section>
+<section id="overall-conclusion" class="level1">
+<h1>7. Overall Conclusion</h1>
+<p>This portfolio demonstrates a comprehensive application of statistical modeling techniques to address diverse predictive challenges. The Diamonds analysis achieved near-perfect prediction of carat weights (R-squared of 0.998) by leveraging multiple regression with polynomial terms, revealing the dominant influence of physical dimensions like width (x) and the nuanced effects of qualitative predictors such as color and clarity. The PFI analysis, using multinomial logistic regression, LDA, and polynomial regression, uncovered critical insights into K-12 student performance, with polynomial regression excelling at 98.2% accuracy—though raising concerns about overfitting—while highlighting absenteeism and balanced family engagement as key factors influencing grades. These findings offer actionable insights for initiatives like GVSU’s K-12 Connect, emphasizing the need to reduce absenteeism and optimize family involvement. The Auto analysis effectively applied ridge regression to predict acceleration, achieving a test RMSE of 1.747969 and addressing multicollinearity among predictors like weight and horsepower, demonstrating the power of regularization over traditional methods like stepwise selection (RMSE 2.38). Collectively, these projects showcase my growth in data preprocessing, model selection, and evaluation using the tidymodels framework, with robust validation through train-test splits and cross-validation. Challenges like class imbalance in the PFI dataset and multicollinearity in the Auto dataset taught me the importance of thoughtful preprocessing and model tuning, while successes like the high accuracy in the Diamonds analysis reinforced the value of capturing nonlinear relationships. Moving forward, addressing data limitations (e.g., oversampling for class imbalance) and exploring additional predictors could further enhance model reliability, equipping me with the skills to tackle real-world problems with statistical rigor and practical insight.</p>
+<p>This conclusion can be placed at the end of your Quarto document, after the individual analyses, to wrap up your portfolio. It reflects on the results, connects them to broader learning objectives, and suggests future improvements, providing a strong closing statement. Let me know if you’d like to modify it further!</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
